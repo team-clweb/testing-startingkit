@@ -33,9 +33,10 @@
     @endif
     <x-input name="organization" :value="old('organization', $contact->company->organization)" placeholder="Organisatie" required /><br>
 
-    @if ($errors->has('city'))
-        <div class="text-red-600">{{ $errors->first('city') }}</div>
-    @endif
+    <!-- error message hetzelfde alleen anders verwoord, laravel docs -->
+    @error('city')
+    <div class="text-red-600">{{ $message }}</div>
+    @enderror
     <x-input name="city" :value="old('city', $contact->company->city)" placeholder="Stad" required /><br>
 
         <x-button.index type="submit">

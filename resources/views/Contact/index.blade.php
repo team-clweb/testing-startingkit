@@ -34,7 +34,7 @@
         </tr>
         </thead>
         <tbody class="divide-y bg-white dark:bg-gray-800 dark:divide-gray-700">
-        @foreach($contacts as $contact)
+        @forelse($contacts as $contact)
             <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">{{ $contact->name }}</td>
                 <td class="px-6 py-4">{{ $contact->company->organization }}</td>
@@ -54,7 +54,13 @@
                     </form>
                 </td>
             </tr>
-        @endforeach
+            @empty
+                <tr>
+                    <td colspan="5" class="py-4 text-center">
+                        Momenteel geen contacten beschikbaar
+                    </td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </div>

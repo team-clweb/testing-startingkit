@@ -23,8 +23,19 @@
     @csrf
     @method('PUT')
 
+    @if ($errors->has('name'))
+        <div class="text-red-600">{{ $errors->first('name') }}</div>
+    @endif
     <x-input name="name" :value="old('name', $contact->name)" placeholder="Naam" required /><br>
+
+    @if ($errors->has('organization'))
+        <div class="text-red-600">{{ $errors->first('organization') }}</div>
+    @endif
     <x-input name="organization" :value="old('organization', $contact->company->organization)" placeholder="Organisatie" required /><br>
+
+    @if ($errors->has('city'))
+        <div class="text-red-600">{{ $errors->first('city') }}</div>
+    @endif
     <x-input name="city" :value="old('city', $contact->company->city)" placeholder="Stad" required /><br>
 
         <x-button.index type="submit">

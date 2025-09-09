@@ -26,9 +26,9 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'organization' => 'required|max:255',
-            'city' => 'required|max:255',
+            'name' => 'required|max:60|regex:/^[a-zA-Z ]+$/',
+            'organization' => 'required|max:70|regex:/^[a-zA-Z ]+$/',
+            'city' => 'required|max:70|regex:/^[a-zA-Z ]+$/',
         ]);
 
         $company = Company::create([
@@ -54,9 +54,9 @@ class ContactController extends Controller
     public function update(Request $request, Contact $contact)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'organization' => 'required|max:255',
-            'city' => 'required|max:255',
+            'name' => 'required|max:60|regex:/^[a-zA-Z ]+$/',
+            'organization' => 'required|max:70|regex:/^[a-zA-Z ]+$/',
+            'city' => 'required|max:70|regex:/^[a-zA-Z ]+$/',
         ]);
 
         $contact->update([

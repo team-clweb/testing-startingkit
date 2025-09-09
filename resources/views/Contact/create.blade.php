@@ -18,11 +18,23 @@
     </div>
 </section>
 
+
 <form action="{{ route('contact.store') }}" method="POST">
     @csrf
 
-    <x-input name="name" placeholder="Naam" required /><br>
+    @if ($errors->has('name'))
+        <div class="text-red-600">{{ $errors->first('name') }}</div>
+    @endif
+    <x-input name="name" placeholder="Naam"  /><br>
+
+    @if ($errors->has('organization'))
+        <div class="text-red-600">{{ $errors->first('organization') }}</div>
+    @endif
     <x-input name="organization" placeholder="Organisatie" required /><br>
+
+    @if ($errors->has('city'))
+        <div class="text-red-600">{{ $errors->first('city') }}</div>
+    @endif
     <x-input name="city" placeholder="Stad" required /><br>
 
 

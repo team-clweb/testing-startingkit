@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\Company;
+use App\Http\Requests\ContactRequest;
 
 
 use Illuminate\Http\Request;
@@ -23,13 +24,9 @@ class ContactController extends Controller
         return view('contact.create');
     }
 
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:60|regex:/^[a-zA-Z ]+$/',
-            'organization' => 'required|max:70|regex:/^[a-zA-Z ]+$/',
-            'city' => 'required|max:70|regex:/^[a-zA-Z ]+$/',
-        ]);
+        $validatedData = $request->validated();
 
         $company = Company::create([
             'organization' => $validatedData['organization'],
@@ -51,13 +48,9 @@ class ContactController extends Controller
         return view('contact.edit', compact('contact'));
     }
 
-    public function update(Request $request, Contact $contact)
+    public function update(ContactRequest $request, Contact $contact)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:60|regex:/^[a-zA-Z ]+$/',
-            'organization' => 'required|max:70|regex:/^[a-zA-Z ]+$/',
-            'city' => 'required|max:70|regex:/^[a-zA-Z ]+$/',
-        ]);
+        $validatedData = $request->validated();
 
         $contact->update([
             'name' => $validatedData['name'],

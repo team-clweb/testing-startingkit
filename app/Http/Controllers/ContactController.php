@@ -14,7 +14,7 @@ class ContactController extends Controller
         //$contacts = Contact::all();
         //return view('contact.index', compact('contacts'));
 
-        $contacts = Contact::with('company')->get();
+        $contacts = Contact::with('company')->paginate(10);
         return view('contact.index', compact('contacts'));
     }
 

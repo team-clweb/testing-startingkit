@@ -64,5 +64,6 @@
         </tbody>
     </table>
 </div>
+{{ $contacts->links() }}
 </body>
 </html>

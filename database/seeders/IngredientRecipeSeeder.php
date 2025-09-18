@@ -12,8 +12,10 @@ class IngredientRecipeSeeder extends Seeder
         DB::table('ingredient_recipe')->insert([
             ['recipe_id' => 1, 'ingredient_id' => 1, 'quantity' => 100],
             ['recipe_id' => 1, 'ingredient_id' => 2, 'quantity' => 200],
-            ['recipe_id' => 2, 'ingredient_id' => 1, 'quantity' => 150],
-            ['recipe_id' => 2, 'ingredient_id' => 2, 'quantity' => 250],
+            ['recipe_id' => 1, 'ingredient_id' => 3, 'quantity' => 150],
+            ['recipe_id' => 2, 'ingredient_id' => 4, 'quantity' => 200],
+            ['recipe_id' => 2, 'ingredient_id' => 5, 'quantity' => 300],
+            ['recipe_id' => 2, 'ingredient_id' => 6, 'quantity' => 1],
         ]);
     }
 }

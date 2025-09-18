@@ -17,3 +17,4 @@ Route::put('/{contact}/update', [ContactController::class, 'update'])->name('con
 Route::delete('{contact}/destroy', [ContactController::class, 'destroy'])->name('contact.destroy');
 
 Route::get('/dishes', [DishesController::class, 'index'])->name('dishes.index');
+Route::get('/dishes/{dish}', [DishesController::class, 'show'])->name('dishes.show');

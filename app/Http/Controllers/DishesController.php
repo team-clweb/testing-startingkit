@@ -13,4 +13,11 @@ class DishesController extends Controller
         $dishes = Dish::with('recipe')->get();
         return view('dishes.index', compact('dishes'));
     }
+
+    public function show(Dish $dish)
+    {
+        $dish->load('recipe.ingredients');
+
+        return view('dishes.show', compact('dish'));
+    }
 }

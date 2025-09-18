@@ -7,6 +7,7 @@
     <title>Gerechten</title>
 </head>
 <body>
+{{-- code afkomstig van https://flowbite.com/docs/components/jumbotron/ --}}
 <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
@@ -14,7 +15,9 @@
         </h1>
     </div>
 </section>
+
 <p ><a href="" class="text-blue-600">Nieuw gerecht toevoegen</a></p>
+{{-- code afkomstig van https://flowbite.com/docs/components/tables/ --}}
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -22,6 +25,7 @@
             <th scope="col" class="px-6 py-3">Naam</th>
             <th scope="col" class="px-6 py-3">Beschrijving</th>
             <th scope="col" class="px-6 py-3">Recept</th>
+            <th scope="col" class="px-6 py-3">Zie ingrediënten</th>
             <th scope="col" class="px-6 py-3">Bewerken</th>
             <th scope="col" class="px-6 py-3">Verwijderen</th>
         </tr>
@@ -31,7 +35,12 @@
             <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">{{ $dish->name }}</td>
                 <td class="px-6 py-4">{{ $dish->description }}</td>
-                <td class="px-6 py-4">{{ $dish->recipe->instructions }}</td>
+                <td class="px-6 py-4">{{ $dish->recipe->instructions }}</td>np
+                <td class="px-6 py-4">
+                    <a href="{{ route('dishes.show', $dish->id) }}" class="text-blue-600 hover:underline">
+                        Bekijk ingrediënten
+                    </a>
+                </td>
                 <td class="px-6 py-4">
                     <a href="" class="text-blue-600">
                         Bewerken

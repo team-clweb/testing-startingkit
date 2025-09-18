@@ -35,7 +35,7 @@
             <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">{{ $dish->name }}</td>
                 <td class="px-6 py-4">{{ $dish->description }}</td>
-                <td class="px-6 py-4">{{ $dish->recipe->instructions }}</td>np
+                <td class="px-6 py-4">{{ $dish->recipe->instructions }}</td>
                 <td class="px-6 py-4">
                     <a href="{{ route('dishes.show', $dish->id) }}" class="text-blue-600 hover:underline">
                         Bekijk ingrediënten

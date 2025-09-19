@@ -16,7 +16,13 @@
     </div>
 </section>
 
-<p ><a href="" class="text-blue-600">Nieuw gerecht toevoegen</a></p>
+@if(session('success'))
+    <div>
+        {{ session('success') }}
+    </div>
+@endif
+
+<p ><a href="{{route  ('dishes.create') }}" class="text-blue-600">Nieuw gerecht toevoegen</a></p>
 {{-- code afkomstig van https://flowbite.com/docs/components/tables/ --}}
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -34,7 +40,7 @@
         @forelse($dishes as $dish)
             <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">{{ $dish->name }}</td>
-                <td class="px-6 py-4">{{ $dish->description }}</td>
+                <td class="px-6 py-4">{{ $dish->description ?? 'Geen beschrijving' }}</td>
                 <td class="px-6 py-4">{{ $dish->recipe->instructions }}</td>
                 <td class="px-6 py-4">
                     <a href="{{ route('dishes.show', $dish->id) }}" class="text-blue-600 hover:underline">
@@ -42,12 +48,12 @@
                     </a>
                 </td>
                 <td class="px-6 py-4">
-                    <a href="" class="text-blue-600">
+                    <a href="{{ route('dishes.edit', $dish->id) }}" class="text-blue-600">
                         Bewerken
                     </a>
                 </td>
                 <td class="px-6 py-4">
-                    <form>
+                    <form action="{{ route('dishes.destroy', $dish->id) }}" method="POST">
                         @csrf
                         @method('delete')
                         <button type="submit" class="text-red-600 ">
@@ -58,8 +64,8 @@
             </tr>
         @empty
             <tr>
-                <td colspan="5" class="py-4 text-center">
-                    Momenteel geen contacten beschikbaar
+                <td colspan="6" class="py-4 text-center">
+                    Momenteel geen gerechten beschikbaar
                 </td>
             </tr>
         @endforelse

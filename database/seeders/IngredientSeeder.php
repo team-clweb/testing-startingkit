@@ -11,7 +11,7 @@ class IngredientSeeder extends Seeder
     {
         Ingredient::create(['name' => 'Spaghetti', 'unit' => 'gram']);
         Ingredient::create(['name' => 'Gehakt', 'unit' => 'gram']);
-        Ingredient::create(['name' => 'Tomatensaus', 'unit' => 'ml']);
+        Ingredient::create(['name' => 'Bolognesesaus', 'unit' => 'ml']);
         Ingredient::create(['name' => 'Rijst', 'unit' => 'gram']);
         Ingredient::create(['name' => 'Kip', 'unit' => 'gram']);
         Ingredient::create(['name' => 'Saffraan', 'unit' => 'gram']);

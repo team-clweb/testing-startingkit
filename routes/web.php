@@ -17,4 +17,9 @@ Route::put('/{contact}/update', [ContactController::class, 'update'])->name('con
 Route::delete('{contact}/destroy', [ContactController::class, 'destroy'])->name('contact.destroy');
 
 Route::get('/dishes', [DishesController::class, 'index'])->name('dishes.index');
+Route::get('dishes/create', [DishesController::class, 'create'])->name('dishes.create');
+Route::post('/dishes/store', [DishesController::class, 'store'])->name('dishes.store');
 Route::get('/dishes/{dish}', [DishesController::class, 'show'])->name('dishes.show');
+Route::get('/dishes/edit/{dish}', [DishesController::class, 'edit'])->name('dishes.edit');
+Route::put('/dishes/update/{dish}', [DishesController::class, 'update'])->name('dishes.update');
+Route::delete('/dishes/{dish}', [DishesController::class, 'destroy'])->name('dishes.destroy');

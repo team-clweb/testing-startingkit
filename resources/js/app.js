@@ -1,8 +1,7 @@
-import 'instant.page'
-import Alpine from 'alpinejs'
-import ajax from '@imacrayon/alpine-ajax'
-import Popover from './components/popover'
+import './bootstrap';
 
-Alpine.plugin(ajax)
-Alpine.data('popover', Popover)
-Alpine.start()
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();

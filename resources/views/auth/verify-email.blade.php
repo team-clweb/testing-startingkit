@@ -1,24 +1,31 @@
-<x-layouts.auth :title="__('Verification required')">
-<div class="mt-4 space-y-6">
-    <x-text class="text-center">
-        {{ __('Please verify your email address by clicking on the link we just emailed to you.') }}
-    </x-text>
+<x-guest-layout>
+    <div class="mb-4 text-sm text-gray-600">
+        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+    </div>
 
     @if (session('status') == 'verification-link-sent')
-        <x-text class="text-center font-medium !dark:text-green-400 !text-green-600">
+        <div class="mb-4 font-medium text-sm text-green-600">
             {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-        </x-text>
+        </div>
     @endif
 
-    <div class="flex flex-col items-center justify-between space-y-3">
-        <x-form method="post" action="{{ route('verification.store') }}">
-            <x-button class="w-full">
-                {{ __('Resend verification email') }}
-            </x-button>
-        </x-form>
-        <x-form method="post" action="{{ route('logout') }}">
-            <x-button variant="link">{{ __('Log out') }}</x-button>
-        </x-form>
+    <div class="mt-4 flex items-center justify-between">
+        <form method="POST" action="{{ route('verification.send') }}">
+            @csrf
+
+            <div>
+                <x-primary-button>
+                    {{ __('Resend Verification Email') }}
+                </x-primary-button>
+            </div>
+        </form>
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+            <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                {{ __('Log Out') }}
+            </button>
+        </form>
     </div>
-</div>
-</x-layouts.auth>
+</x-guest-layout>

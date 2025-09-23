@@ -6,10 +6,10 @@
 
 <a aria-current="{{ $current ? 'page' : '' }}" {{ $attributes->class([
     'relative flex items-center justify-center space-x-3 h-8 rounded-lg',
-    'text-gray-500 dark:text-white/80',
-    'hover:text-gray-800 dark:hover:text-white',
+    'text-gray-500',
+    'hover:text-gray-800',
     'aria-current:after:absolute aria-current:after:-bottom-3 aria-current:after:inset-x-0 aria-current:after:h-[2px]',
-    'aria-current:text-(--color-accent-content) hover:aria-current:text-(--color-accent-content) hover:bg-gray-800/5 dark:hover:bg-white/10 hover:aria-current:bg-transparent',
+    'aria-current:text-(--color-accent-content) hover:aria-current:text-(--color-accent-content) hover:bg-gray-800/5 hover:aria-current:bg-transparent',
     'aria-current:after:bg-(--color-accent-content)',
     $slot->isNotEmpty() ? 'px-3' : 'size-10',
 ]) }}>

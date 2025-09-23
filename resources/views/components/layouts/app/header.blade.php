@@ -3,8 +3,8 @@
     <head>
         @include('partials.head')
     </head>
-    <body class="layout min-h-screen bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-        <x-header class="border-b border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900">
+    <body class="layout min-h-screen bg-white text-gray-700">
+        <x-header class="border-b border-gray-200 bg-gray-50">
             <x-container class="flex items-center">
                 <x-sidebar.toggle class="lg:hidden w-10 p-0">
                     <x-phosphor-list aria-hidden="true" width="20" height="20" />
@@ -42,20 +42,20 @@
 
                 <!-- Desktop User Menu -->
                 <x-popover align="top" justify="right">
-                    <button type="button" class="w-full group flex items-center rounded-lg p-1 hover:bg-gray-800/5 dark:hover:bg-white/10">
-                        <span class="shrink-0 size-8 bg-gray-200 rounded-sm overflow-hidden dark:bg-gray-700">
+                    <button type="button" class="w-full group flex items-center rounded-lg p-1 hover:bg-gray-800/5">
+                        <span class="shrink-0 size-8 bg-gray-200 rounded-sm overflow-hidden">
                             <span class="w-full h-full flex items-center justify-center text-sm">
                                 {{ auth()->user()->initials() }}
                             </span>
                         </span>
                         <span class="shrink-0 ml-auto size-8 flex justify-center items-center">
-                            <x-phosphor-caret-down width="16" height="16" class="text-gray-400 dark:text-white/80 group-hover:text-gray-800 dark:group-hover:text-white" />
+                            <x-phosphor-caret-down width="16" height="16" class="text-gray-400 group-hover:text-gray-800" />
                         </span>
                     </button>
                     <x-slot:menu class="w-max">
                         <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                             <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
-                                <span class="flex h-full w-full items-center justify-center rounded-lg bg-gray-200 text-black dark:bg-gray-700 dark:text-white">
+                                <span class="flex h-full w-full items-center justify-center rounded-lg bg-gray-200 text-black">
                                     {{ auth()->user()->initials() }}
                                 </span>
                             </span>
@@ -76,7 +76,7 @@
         </x-header>
 
         <!-- Mobile Menu -->
-        <x-sidebar stashable sticky class="lg:hidden border-r border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900">
+        <x-sidebar stashable sticky class="lg:hidden border-r border-gray-200 bg-gray-50">
             <x-sidebar.toggle class="lg:hidden w-10 p-0">
                 <x-phosphor-x aria-hidden="true" width="20" height="20" />
             </x-sidebar.toggle>

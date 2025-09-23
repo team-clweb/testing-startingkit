@@ -8,9 +8,9 @@
 </head>
 <body>
 {{-- code afkomstig van https://flowbite.com/docs/components/jumbotron/ --}}
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-white">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
-        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
             Restaurant gerechten
         </h1>
     </div>
@@ -25,8 +25,8 @@
 <p ><a href="{{route  ('dishes.create') }}" class="text-blue-600">Nieuw gerecht toevoegen</a></p>
 {{-- code afkomstig van https://flowbite.com/docs/components/tables/ --}}
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>
             <th scope="col" class="px-6 py-3">Naam</th>
             <th scope="col" class="px-6 py-3">Beschrijving</th>
@@ -36,9 +36,9 @@
             <th scope="col" class="px-6 py-3">Verwijderen</th>
         </tr>
         </thead>
-        <tbody class="divide-y bg-white dark:bg-gray-800 dark:divide-gray-700">
+        <tbody class="divide-y bg-white">
         @forelse($dishes as $dish)
-            <tr class="hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr class="hover:bg-gray-50">
                 <td class="px-6 py-4">{{ $dish->name }}</td>
                 <td class="px-6 py-4">{{ $dish->description ?? 'Geen beschrijving' }}</td>
                 <td class="px-6 py-4">{{ $dish->recipe->instructions }}</td>

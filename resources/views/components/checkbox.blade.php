@@ -2,13 +2,13 @@
 $classes = [
     'col-start-1 row-start-1 appearance-none forced-colors:appearance-auto',
     'shrink-0 size-5 rounded-md',
-    'text-sm text-gray-700 dark:text-gray-800',
+    'text-sm text-gray-700',
     'shadow-xs disabled:opacity-75 disabled:checked:opacity-50 disabled:shadow-none checked:shadow-none indeterminate:shadow-none',
-    'border border-gray-300 dark:border-white/10',
-    'disabled:border-gray-200 dark:disabled:border-white/5',
+    'border border-gray-300',
+    'disabled:border-gray-200',
     'checked:border-transparent indeterminate:border-transparent',
     'disabled:checked:border-transparent disabled:indeterminate:border-transparent',
-    'bg-white dark:bg-white/10',
+    'bg-white',
     'checked:bg-(--color-accent)',
 ];
 @endphp

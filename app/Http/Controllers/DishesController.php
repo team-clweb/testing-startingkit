@@ -17,20 +17,33 @@ class DishesController extends Controller
         return view('dishes.index', compact('dishes'));
     }
 
-    public function create(Recipe $recipe)
+    public function create(Dish $dish)
     {
-
+        return view('dishes.create', compact('dish'));
     }
 
-    public function store(Request $request)
+    public function store(DishRequest $request)
     {
+        $validated = $request->validated();
 
+        $dish = Dish::create([
+            'name' => $validated['name'],
+            'description' => $validated['description'] ?? null,
+        ]);
+
+        Recipe::create([
+            'dish_id' => $dish->id,
+            'instructions' => $validated['instructions'],
+        ]);
+
+        return redirect()->route('dishes.index')->with('success', 'Gerecht aangemaakt.');
     }
+
 
 
     public function show(Dish $dish)
     {
-        $dish->load('recipe.ingredients');
+        $dish->load('recipe.ingredients.stocks');
 
         return view('dishes.show', compact('dish'));
     }
@@ -56,6 +69,7 @@ class DishesController extends Controller
 
         return redirect()->route('dishes.index')->with('success', 'Gerecht bijgewerkt.');
     }
+
     public function destroy(Dish $dish)
     {
         $dish->delete();

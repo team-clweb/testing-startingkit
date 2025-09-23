@@ -9,12 +9,12 @@
 <body>
 
 {{-- code afkomstig van https://flowbite.com/docs/components/jumbotron/ --}}
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-white">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
-        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
             Gerecht bewerken
         </h1>
-        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
+        <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl">
             Vul hieronder de gegevens in om het gerecht bij te werken.
         </p>
     </div>

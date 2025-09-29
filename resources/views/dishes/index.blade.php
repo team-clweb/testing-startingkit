@@ -22,18 +22,30 @@
     </div>
 @endif
 
-<p ><a href="{{route  ('dishes.create') }}" class="text-blue-600">Nieuw gerecht toevoegen</a></p>
+{{-- Laravel form building --}}
+<p>
+    {!! html()->a(route('dishes.create'), 'Nieuw gerecht toevoegen')->class('text-blue-600') !!}
+</p>
 {{-- code afkomstig van https://flowbite.com/docs/components/tables/ --}}
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500">
+    <table class="w-full table-fixed text-sm text-center text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>
-            <th scope="col" class="px-6 py-3">Naam</th>
-            <th scope="col" class="px-6 py-3">Beschrijving</th>
-            <th scope="col" class="px-6 py-3">Recept</th>
-            <th scope="col" class="px-6 py-3">Zie ingrediënten</th>
-            <th scope="col" class="px-6 py-3">Bewerken</th>
-            <th scope="col" class="px-6 py-3">Verwijderen</th>
+            <th class="px-6 py-3">Naam</th>
+            <th class="px-6 py-3">Beschrijving</th>
+            <th class="px-6 py-3">Recept</th>
+
+            @can('view', App\Models\Dish::class)
+                <th class="px-6 py-3">Zie ingrediënten</th>
+            @endcan
+
+            @can('update', App\Models\Dish::class)
+                <th class="px-6 py-3">Bewerken</th>
+            @endcan
+
+            @can('delete', App\Models\Dish::class)
+                <th class="px-6 py-3">Verwijderen</th>
+            @endcan
         </tr>
         </thead>
         <tbody class="divide-y bg-white">
@@ -42,30 +54,39 @@
                 <td class="px-6 py-4">{{ $dish->name }}</td>
                 <td class="px-6 py-4">{{ $dish->description ?? 'Geen beschrijving' }}</td>
                 <td class="px-6 py-4">{{ $dish->recipe->instructions }}</td>
-                <td class="px-6 py-4">
-                    <a href="{{ route('dishes.show', $dish->id) }}" class="text-blue-600 hover:underline">
-                        Bekijk ingrediënten
-                    </a>
-                </td>
-                <td class="px-6 py-4">
-                    <a href="{{ route('dishes.edit', $dish->id) }}" class="text-blue-600">
-                        Bewerken
-                    </a>
-                </td>
-                <td class="px-6 py-4">
-                    <form action="{{ route('dishes.destroy', $dish->id) }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="text-red-600 ">
-                            Verwijderen
-                        </button>
-                    </form>
-                </td>
+
+                @can('view', $dish)
+                    <td class="px-6 py-4">
+                        <a href="{{ route('dishes.show', $dish->id) }}" class="text-blue-600 hover:underline">
+                            Bekijk ingrediënten
+                        </a>
+                    </td>
+                @endcan
+
+                @can('update', $dish)
+                    <td class="px-6 py-4">
+                        <a href="{{ route('dishes.edit', $dish->id) }}" class="text-blue-600">
+                            Bewerken
+                        </a>
+                    </td>
+                @endcan
+
+                @can('delete', $dish)
+                    <td class="px-6 py-4">
+                        <form action="{{ route('dishes.destroy', $dish->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="text-red-600">
+                                Verwijderen
+                            </button>
+                        </form>
+                    </td>
+                @endcan
             </tr>
         @empty
             <tr>
-                <td colspan="6" class="py-4 text-center">
-                    Momenteel geen gerechten beschikbaar
+                <td colspan="6" class="px-6 py-4 text-center text-gray-400">
+                    Geen gerechten gevonden.
                 </td>
             </tr>
         @endforelse

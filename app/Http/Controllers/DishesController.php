@@ -8,6 +8,10 @@ use App\Models\Dish;
 use App\Models\Recipe;
 use App\Models\Ingredient;
 use App\Http\Requests\DishRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+//use App\Http\Controllers\Auth\AuthController;
+
 
 class DishesController extends Controller
 {
@@ -17,13 +21,17 @@ class DishesController extends Controller
         return view('dishes.index', compact('dishes'));
     }
 
-    public function create(Dish $dish)
+    public function create()
     {
-        return view('dishes.create', compact('dish'));
+        $this->authorize('create', Dish::class);
+
+        return view('dishes.create');
     }
 
     public function store(DishRequest $request)
     {
+        $this->authorize('create', Dish::class);
+
         $validated = $request->validated();
 
         $dish = Dish::create([
@@ -39,10 +47,10 @@ class DishesController extends Controller
         return redirect()->route('dishes.index')->with('success', 'Gerecht aangemaakt.');
     }
 
-
-
     public function show(Dish $dish)
     {
+        $this->authorize('view', $dish);
+
         $dish->load('recipe.ingredients.stocks');
 
         return view('dishes.show', compact('dish'));
@@ -50,12 +58,16 @@ class DishesController extends Controller
 
     public function edit(Dish $dish)
     {
+        $this->authorize('update', $dish);
+
         $dish->load('recipe');
         return view('dishes.edit', compact('dish'));
     }
 
     public function update(DishRequest $request, Dish $dish)
     {
+        $this->authorize('update', $dish);
+
         $validated = $request->validated();
 
         $dish->update([
@@ -72,9 +84,10 @@ class DishesController extends Controller
 
     public function destroy(Dish $dish)
     {
+        $this->authorize('delete', $dish);
+
         $dish->delete();
 
-        //return redirect('/dishes')->with('success', 'Gerecht verwijderd.');
-        //return redirect()->route('dishes.index')->with('success', 'Gerecht verwijderd.');
+        return redirect()->route('dishes.index')->with('success', 'Gerecht verwijderd.');
     }
 }

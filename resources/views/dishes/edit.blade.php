@@ -20,32 +20,31 @@
     </div>
 </section>
 
-<form action="{{ route('dishes.update', $dish->id) }}" method="POST" class="max-w-xl mx-auto">
-    @csrf
-    @method('PUT')
+{{ html()->modelForm($dish, 'PUT', route('dishes.update', $dish->id))->class('max-w-xl mx-auto')->open() }}
 
-    @error('name')
-    <div class="text-red-600">{{ $message }}</div>
-    @enderror
-    <label for="name">Naam gerecht:</label>
-    <x-input name="name" :value="old('name', $dish->name)" placeholder="Naam gerecht" required /><br>
+@error('name')
+<div class="text-red-600">{{ $message }}</div>
+@enderror
+<label for="name">Naam gerecht:</label>
+<x-input name="name" :value="old('name', $dish->name)" placeholder="Naam gerecht" required /><br>
 
-    @error('description')
-    <div class="text-red-600">{{ $message }}</div>
-    @enderror
-    <label for="name">Omschrijving:</label>
-    <x-input name="description" :value="old('description', $dish->description)" placeholder="Omschrijving" /><br>
+@error('description')
+<div class="text-red-600">{{ $message }}</div>
+@enderror
+<label for="description">Omschrijving:</label>
+<x-input name="description" :value="old('description', $dish->description)" placeholder="Omschrijving" /><br>
 
-    @error('instructions')
-    <div class="text-red-600">{{ $message }}</div>
-    @enderror
-    <label for="name">Recept:</label>
-    <x-input name="instructions" :value="old('instructions', $dish->recipe->instructions)" placeholder="Recept" /><br>
+@error('instructions')
+<div class="text-red-600">{{ $message }}</div>
+@enderror
+<label for="instructions">Recept:</label>
+<x-input name="instructions" :value="old('instructions', $dish->recipe->instructions ?? '')" placeholder="Recept" /><br>
 
-    <x-button.index type="submit">
-        Opslaan
-    </x-button.index>
-</form>
+<x-button.index type="submit">Opslaan</x-button.index>
+
+{{ html()->closeModelForm() }}
+
+
 
 <p class="text-center mt-6">
     <a href="{{ route('dishes.index') }}" class="text-blue-600 hover:underline">Terug naar overzicht</a>

@@ -38,11 +38,12 @@ class DishesController extends Controller
             'name' => $validated['name'],
             'description' => $validated['description'] ?? null,
         ]);
+        $dish->recepies()->create( [ 'instructions' => $validated['instructions']]);
 
-        Recipe::create([
-            'dish_id' => $dish->id,
-            'instructions' => $validated['instructions'],
-        ]);
+//        Recipe::create([
+//            'dish_id' => $dish->id,
+//            'instructions' => $validated['instructions'],
+//        ]);
 
         return redirect()->route('dishes.index')->with('success', 'Gerecht aangemaakt.');
     }
@@ -60,12 +61,18 @@ class DishesController extends Controller
     {
         $this->authorize('update', $dish);
 
-        $dish->load('recipe');
-        return view('dishes.edit', compact('dish'));
+        $dish->load('recipe','recipe.ingredients');
+
+        $view = view('dishes.edit');
+        $view->dish = $dish;
+        $view->ingrediens = Ingredient::all()->pluck('name', 'id')->all();
+
+        return $view;
     }
 
     public function update(DishRequest $request, Dish $dish)
     {
+
         $this->authorize('update', $dish);
 
         $validated = $request->validated();
@@ -74,7 +81,16 @@ class DishesController extends Controller
             'name' => $validated['name'],
             'description' => $validated['description'] ?? null,
         ]);
+        $new_collection = collect($request->get('recipe_ingredients'));
+        $new = $new_collection->filter(function ($value, $key) {
 
+            return isset($value['quantity']);
+        })->toArray();
+
+       // dd($new);
+//dd($request->all());
+        $dish->recipe->ingredients()->sync($new);
+        ////$user->roles()->sync([1 => ['expires' => true], 2, 3]);
         $dish->recipe->update([
             'instructions' => $validated['instructions'],
         ]);

@@ -23,27 +23,7 @@
 <form action="{{ route('dishes.store') }}" method="POST" class="max-w-xl mx-auto">
     @csrf
 
-    @error('name')
-    <div class="text-red-600">{{ $message }}</div>
-    @enderror
-    <label for="name">Naam gerecht:</label>
-    <x-input name="name" :value="old('name')" placeholder="Naam gerecht" required /><br>
-
-    @error('description')
-    <div class="text-red-600">{{ $message }}</div>
-    @enderror
-    <label for="description">Omschrijving:</label>
-    <x-input name="description" :value="old('description')" placeholder="Omschrijving" /><br>
-
-    @error('instructions')
-    <div class="text-red-600">{{ $message }}</div>
-    @enderror
-    <label for="instructions">Recept:</label>
-    <x-input name="instructions" :value="old('instructions')" placeholder="Recept" /><br>
-
-    <x-button.index type="submit">
-        Toevoegen
-    </x-button.index>
+    @include('dishes._form')
 </form>
 
 <p class="text-center mt-6">

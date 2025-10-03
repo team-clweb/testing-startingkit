@@ -60,12 +60,18 @@ class DishesController extends Controller
     {
         $this->authorize('update', $dish);
 
-        $dish->load('recipe');
-        return view('dishes.edit', compact('dish'));
+        $dish->load('recipe','recipe.ingredients');
+
+        $view = view('dishes.edit');
+        $view->dish = $dish;
+        $view->ingredients = Ingredient::all()->pluck('name', 'id')->all();
+
+        return $view;
     }
 
     public function update(DishRequest $request, Dish $dish)
     {
+
         $this->authorize('update', $dish);
 
         $validated = $request->validated();
@@ -76,11 +82,16 @@ class DishesController extends Controller
         ]);
 
         $dish->recipe->update([
-            'instructions' => $validated['instructions'],
+            'instructions' => $validated['instructions'] ?? '',
         ]);
+
+        $ingredientIds = $request->input('recipe_ingredients', []);
+
+        $dish->recipe->ingredients()->sync($ingredientIds);
 
         return redirect()->route('dishes.index')->with('success', 'Gerecht bijgewerkt.');
     }
+
 
     public function destroy(Dish $dish)
     {

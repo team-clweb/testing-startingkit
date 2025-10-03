@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DishesController;
+use App\Http\Controllers\IngredientsController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,5 +38,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/dishes/{dish}', [DishesController::class, 'destroy'])->name('dishes.destroy');
 });
 
+Route::get('/ingredients', [IngredientsController::class, 'index'])->name('ingredients.index');
+Route::get('/ingredients/create', [IngredientsController::class, 'create'])->name('ingredients.create');
+Route::post('/ingredients/store', [IngredientsController::class, 'store'])->name('ingredients.store');
+Route::get('/ingredients/edit/{ingredient}', [IngredientsController::class, 'edit'])->name('ingredients.edit');
+Route::put('/ingredients/update/{ingredient}', [IngredientsController::class, 'update'])->name('ingredients.update');
+Route::delete('/ingredients/{ingredient}', [IngredientsController::class, 'destroy'])->name('ingredients.destroy');
 
 require __DIR__.'/auth.php';

@@ -23,9 +23,12 @@
 @endif
 
 {{-- Laravel form building --}}
+
+@can('update', App\Models\Dish::class)
 <p>
     {!! html()->a(route('dishes.create'), 'Nieuw gerecht toevoegen')->class('text-blue-600') !!}
 </p>
+@endcan
 {{-- code afkomstig van https://flowbite.com/docs/components/tables/ --}}
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full table-fixed text-sm text-center text-gray-500">
@@ -53,7 +56,7 @@
             <tr class="hover:bg-gray-50">
                 <td class="px-6 py-4">{{ $dish->name }}</td>
                 <td class="px-6 py-4">{{ $dish->description ?? 'Geen beschrijving' }}</td>
-                <td class="px-6 py-4">{{ $dish->recipe->instructions }}</td>
+                <td class="px-6 py-4">{{ $dish->recipe->instructions}}</td>
 
                 @can('view', $dish)
                     <td class="px-6 py-4">

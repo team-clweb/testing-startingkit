@@ -76,7 +76,7 @@
 
                 @can('delete', $dish)
                     <td class="px-6 py-4">
-                        <form action="{{ route('dishes.destroy', $dish->id) }}" method="POST">
+                        <form action="{{ route('dishes.destroy', $dish->id) }}" method="POST"  onsubmit="return confirm('Weet je zeker dat je dit gerecht wilt verwijderen?');">
                             @csrf
                             @method('delete')
                             <button type="submit" class="text-red-600">

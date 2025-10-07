@@ -39,6 +39,10 @@
 <label for="instructions">Recept:</label>
 <x-input name="instructions" :value="old('instructions')" placeholder="Recept" /><br>
 
+@foreach($ingredients as $id => $ingredient)
+    {{ html()->checkbox('recipe.ingredients[]', in_array($id, old('recipe.ingredients', [])), $id) }} {{$ingredient}}<br />
+@endforeach
+
 <x-button.index type="submit">
     Toevoegen
 </x-button.index>

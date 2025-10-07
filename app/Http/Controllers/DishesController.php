@@ -25,8 +25,11 @@ class DishesController extends Controller
     {
         $this->authorize('create', Dish::class);
 
-        return view('dishes.create');
+        $ingredients = Ingredient::all()->pluck('name', 'id')->all();
+
+        return view('dishes.create', compact('ingredients'));
     }
+
 
     public function store(DishRequest $request)
     {
@@ -43,6 +46,10 @@ class DishesController extends Controller
             'dish_id' => $dish->id,
             'instructions' => $validated['instructions'],
         ]);
+
+        $ingredientIds = $request->input('recipe_ingredients', []);
+
+        $dish->recipe->ingredients()->sync($ingredientIds);
 
         return redirect()->route('dishes.index')->with('success', 'Gerecht aangemaakt.');
     }

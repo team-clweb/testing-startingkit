@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dish;
 use Illuminate\Http\Request;
 use App\Models\Ingredient;
+use App\Models\Stock;
 use App\Http\Requests\IngredientRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class IngredientsController extends Controller
 {
     public function index()
     {
+        $this->authorize('viewAny', Ingredient::class);
+
         $ingredients = Ingredient::all();
 
         return view('ingredients.index', compact('ingredients'));
@@ -17,16 +23,24 @@ class IngredientsController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Ingredient::class);
         return view('ingredients.create');
     }
 
     public function store(IngredientRequest $request)
     {
+        $this->authorize('create', Ingredient::class);
         $validated = $request->validated();
 
-        Ingredient::create([
+        $ingredient = Ingredient::create([
             'name' => $validated['name'],
             'unit' => $validated['unit'],
+        ]);
+
+        Stock::create([
+            'ingredient_id' => $ingredient->id,
+            'quantity' => 1,
+            'delivery_date' => now(),
         ]);
 
         return redirect()->route('ingredients.index')->with('success', 'Ingrediënt aangemaakt.');
@@ -35,11 +49,15 @@ class IngredientsController extends Controller
 
     public function edit(Ingredient $ingredient)
     {
+
+        $this->authorize('update', $ingredient);
         return view('ingredients.edit', compact('ingredient'));
     }
 
     public function update(IngredientRequest $request, Ingredient $ingredient)
     {
+        $this->authorize('update', $ingredient);
+
         $validated = $request->validated();
 
         $ingredient->update([
@@ -52,6 +70,8 @@ class IngredientsController extends Controller
 
     public function destroy(Ingredient $ingredient)
     {
+        $this->authorize('delete', $ingredient);
+
         $ingredient->delete();
 
         return redirect()->route('ingredients.index')->with('success', 'Ingrediënt verwijderd.');

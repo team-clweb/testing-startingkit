@@ -26,7 +26,6 @@
 
 {{ html()->closeModelForm() }}
 
-
 <p class="text-center mt-6">
     <a href="{{ route('ingredients.index') }}" class="text-blue-600 hover:underline">Terug naar overzicht</a>
 </p>

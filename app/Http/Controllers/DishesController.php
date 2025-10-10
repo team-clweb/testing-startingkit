@@ -17,7 +17,7 @@ class DishesController extends Controller
 {
     public function index()
     {
-        $dishes = Dish::with('recipe')->get();
+        $dishes = Dish::with('recipe')->paginate(5);
         return view('dishes.index', compact('dishes'));
     }
 
@@ -37,9 +37,16 @@ class DishesController extends Controller
 
         $validated = $request->validated();
 
+        $imagePath = null;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('dishes', 'public');
+        }
+
         $dish = Dish::create([
             'name' => $validated['name'],
             'description' => $validated['description'] ?? null,
+            'image' => $imagePath,
         ]);
 
         Recipe::create([
@@ -58,7 +65,7 @@ class DishesController extends Controller
     {
         $this->authorize('view', $dish);
 
-        $dish->load('recipe.ingredients.stocks');
+        $dish->load('recipe.ingredients.stock');
 
         return view('dishes.show', compact('dish'));
     }

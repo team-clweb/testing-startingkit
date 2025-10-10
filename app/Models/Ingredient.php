@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Ingredient extends Model
 {
@@ -18,8 +18,8 @@ class Ingredient extends Model
         return $this->belongsToMany(Recipe::class)
             ->withPivot(['quantity']);
     }
-    public function stocks(): HasMany
+    public function stock(): HasOne
     {
-        return $this->hasMany(Stock::class);
+        return $this->HasOne(Stock::class);
     }
 }

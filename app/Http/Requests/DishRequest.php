@@ -25,6 +25,7 @@ class DishRequest extends FormRequest
             'name' => 'required|max:80',
             'description' => 'nullable|max:150',
             'instructions' => 'required|max:150',
+            'image' => 'nullable|image|max:2048',
         ];
     }
 }

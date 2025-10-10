@@ -37,8 +37,9 @@
             <th class="px-6 py-3">Naam</th>
             <th class="px-6 py-3">Beschrijving</th>
             <th class="px-6 py-3">Recept</th>
+            <th class="px-6 py-3">Afbeelding</th>
 
-            @can('view', App\Models\Dish::class)
+        @can('view', App\Models\Dish::class)
                 <th class="px-6 py-3">Zie ingrediënten</th>
             @endcan
 
@@ -58,7 +59,15 @@
                 <td class="px-6 py-4">{{ $dish->description ?? 'Geen beschrijving' }}</td>
                 <td class="px-6 py-4">{{ $dish->recipe->instructions}}</td>
 
-                @can('view', $dish)
+                <td class="px-6 py-4">
+                    @if($dish->image)
+                        <img src="{{ asset('storage/' . $dish->image) }}" alt="img" class="w-24 h-24 object-cover mx-auto rounded">
+                    @else
+                        <span class="text-gray-400">Geen afbeelding</span>
+                    @endif
+                </td>
+
+            @can('view', $dish)
                     <td class="px-6 py-4">
                         <a href="{{ route('dishes.show', $dish->id) }}" class="text-blue-600 hover:underline">
                             Bekijk ingrediënten
@@ -96,5 +105,6 @@
         </tbody>
     </table>
 </div>
+{{ $dishes->links() }}
 </body>
 </html>

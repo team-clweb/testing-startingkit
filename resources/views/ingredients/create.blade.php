@@ -20,8 +20,7 @@
     </div>
 </section>
 
-<form action="{{ route('ingredients.store') }}" method="POST" class="max-w-xl mx-auto">
-    @csrf
+{{ html()->form('POST', route('ingredients.store'))->class('max-w-xl mx-auto')->open() }}
 
     @error('name')
     <div class="text-red-600">{{ $message }}</div>
@@ -35,12 +34,16 @@
     <label for="unit">Eenheid:</label>
     <x-input name="unit" :value="old('unit')" placeholder="Eenheid" required /><br>
 
+    @error('quantity')
+    <div class="text-red-600">{{ $message }}</div>
+    @enderror
+    <label for="quantity">Opslag:</label>
+    <x-input name="quantity" type="number" :value="old('quantity', 0)" placeholder="Opslag" required /><br>
+
     <x-button.index type="submit">
         Toevoegen
     </x-button.index>
-
-
-</form>
+{{ html()->closeModelForm() }}
 
 <p class="text-center mt-6">
     <a href="{{ route('ingredients.index') }}" class="text-blue-600 hover:underline">Terug naar overzicht</a>

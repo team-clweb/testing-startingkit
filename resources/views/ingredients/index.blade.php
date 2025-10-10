@@ -33,6 +33,7 @@
         <tr>
             <th class="px-6 py-3">Naam</th>
             <th class="px-6 py-3">Eenheid</th>
+            <th class="px-6 py-3">Opslag</th>
             <th class="px-6 py-3">Bewerken</th>
             <th class="px-6 py-3">Verwijderen</th>
         </tr>
@@ -42,6 +43,7 @@
             <tr class="hover:bg-gray-50">
                 <td class="px-6 py-4">{{ $ingredient->name }}</td>
                 <td class="px-6 py-4">{{ $ingredient->unit }}</td>
+                <td class="px-6 py-4">{{ $ingredient->stock->quantity}}</td>
                 <td class="px-6 py-4">
                     <a href="{{ route('ingredients.edit', $ingredient->id) }}" class="text-blue-600 hover:underline">
                         Bewerken
@@ -67,5 +69,6 @@
         </tbody>
     </table>
 </div>
+{{ $ingredients->links() }}
 </body>
 </html>

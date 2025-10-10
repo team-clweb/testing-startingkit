@@ -20,7 +20,7 @@
     </div>
 </section>
 
-{{ html()->form('POST', route('dishes.store'))->class('max-w-xl mx-auto')->open() }}
+{{ html()->form('POST', route('dishes.store'))->attribute('enctype', 'multipart/form-data')->class('max-w-xl mx-auto')->open() }}
 @error('name')
 <div class="text-red-600">{{ $message }}</div>
 @enderror
@@ -38,6 +38,14 @@
 @enderror
 <label for="instructions">Recept:</label>
 <x-input name="instructions" :value="old('instructions')" placeholder="Recept" /><br>
+
+@error('image')
+<div class="text-red-600">{{ $message }}</div>
+@enderror
+
+<label for="image">Afbeelding:</label>
+<input type="file" name="image" accept="image/*" class="mb-4"><br>
+
 
 @foreach($ingredients as $id => $ingredient)
     {{ html()->checkbox('recipe.ingredients[]', in_array($id, old('recipe.ingredients', [])), $id) }} {{$ingredient}}<br />

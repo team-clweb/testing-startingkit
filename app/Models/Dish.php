@@ -10,7 +10,8 @@ class Dish extends Model
 {
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'image'
     ];
 
     public function recipe(): HasOne

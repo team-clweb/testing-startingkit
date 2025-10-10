@@ -16,7 +16,7 @@ class IngredientsController extends Controller
     {
         $this->authorize('viewAny', Ingredient::class);
 
-        $ingredients = Ingredient::all();
+        $ingredients = Ingredient::with('stock')->paginate(10);
 
         return view('ingredients.index', compact('ingredients'));
     }
@@ -39,7 +39,7 @@ class IngredientsController extends Controller
 
         Stock::create([
             'ingredient_id' => $ingredient->id,
-            'quantity' => 1,
+            'quantity' => $validated['quantity'],
             'delivery_date' => now(),
         ]);
 
@@ -63,6 +63,10 @@ class IngredientsController extends Controller
         $ingredient->update([
             'name' => $validated['name'],
             'unit' => $validated['unit'],
+        ]);
+
+        $ingredient->stock->update([
+            'quantity' => $validated['quantity'],
         ]);
 
         return redirect()->route('ingredients.index')->with('success', 'Ingrediënt bijgewerkt.');

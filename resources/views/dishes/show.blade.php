@@ -18,7 +18,7 @@
         <ul class="space-y-1 text-gray-700 list-disc list-inside">
             @foreach($dish->recipe->ingredients as $ingredient)
                 <li>
-                    {{ $ingredient->name }} - {{ $ingredient->pivot->quantity }} {{ $ingredient->unit }} - Voorraad: {{ $ingredient->stocks->sum('quantity') }}
+                    {{ $ingredient->name }} - {{ $ingredient->pivot->quantity }} {{ $ingredient->unit }} - Voorraad: {{ $ingredient->stock->quantity }}
                 </li>
             @endforeach
         </ul>

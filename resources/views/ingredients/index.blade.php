@@ -17,8 +17,10 @@
 </section>
 
 @if(session('success'))
-    <div>
-        {{ session('success') }}
+    <div class="flex justify-center mt-4">
+        <div class="bg-green-100 text-green-800 px-4 py-2 rounded">
+            {{ session('success') }}
+        </div>
     </div>
 @endif
 
@@ -61,7 +63,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4" class="px-6 py-4 text-gray-400">
+                <td colspan="5" class="px-6 py-4 text-red-600">
                     Geen ingrediënten gevonden.
                 </td>
             </tr>

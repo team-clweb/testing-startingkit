@@ -54,12 +54,19 @@ class DishesController extends Controller
             'instructions' => $validated['instructions'],
         ]);
 
-        $ingredientIds = $request->input('recipe_ingredients', []);
+        //$ingredientIds = $request->input('recipe_ingredients', []);
+        //$dish->recipe->ingredients()->sync($ingredientIds);
 
-        $dish->recipe->ingredients()->sync($ingredientIds);
+        $new_collection = collect($request->get('recipe_ingredients'));
+        $new = $new_collection->filter(function ($value, $key) {
+            return isset($value['quantity']);
+        })->toArray();
+
+        $dish->recipe->ingredients()->sync($new);
 
         return redirect()->route('dishes.index')->with('success', 'Gerecht aangemaakt.');
     }
+
 
     public function show(Dish $dish)
     {
@@ -95,13 +102,17 @@ class DishesController extends Controller
             'description' => $validated['description'] ?? null,
         ]);
 
+        $new_collection = collect($request->get('recipe_ingredients'));
+        $new = $new_collection->filter(function ($value, $key) {
+
+            return isset($value['quantity']);
+        })->toArray();
+
+        $dish->recipe->ingredients()->sync($new);
+
         $dish->recipe->update([
-            'instructions' => $validated['instructions'] ?? '',
+            'instructions' => $validated['instructions'],
         ]);
-
-        $ingredientIds = $request->input('recipe_ingredients', []);
-
-        $dish->recipe->ingredients()->sync($ingredientIds);
 
         return redirect()->route('dishes.index')->with('success', 'Gerecht bijgewerkt.');
     }

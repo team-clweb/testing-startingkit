@@ -49,7 +49,9 @@
 
 @foreach($ingredients as $id => $ingredient)
     {{ html()->checkbox('recipe.ingredients[]', in_array($id, old('recipe.ingredients', [])), $id) }} {{$ingredient}}<br />
+    {{ html()->text('recipe_ingredients[' . $id . '][quantity]', old('recipe_ingredients.' . $id . '.quantity')) }}<br />
 @endforeach
+
 
 <x-button.index type="submit">
     Toevoegen

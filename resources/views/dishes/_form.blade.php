@@ -18,8 +18,11 @@
 <label for="instructions">Recept:</label>
 <x-input name="instructions" :value="old('instructions', $dish->recipe->instructions ?? '')" placeholder="Recept" /><br>
 
-@foreach($ingredients as $id=>$ingredient)
+@foreach($ingredients as $id => $ingredient)
     {{html()->checkbox('recipe.ingredients[]',$dish->recipe->ingredients()->where('ingredients.id',$id)->exists(),$id)}} {{$ingredient}}<br />
+    {{html()->text('recipe.ingredients[' . $id . '][quantity]',optional(optional($dish->recipe->ingredients->firstWhere('id', $id))->pivot)->quantity) }}<br />
 @endforeach
+
+
 
 <x-button.index type="submit">Opslaan</x-button.index>

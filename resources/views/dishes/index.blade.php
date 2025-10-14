@@ -17,10 +17,13 @@
 </section>
 
 @if(session('success'))
-    <div>
-        {{ session('success') }}
+    <div class="flex justify-center mt-4">
+        <div class="bg-green-100 text-green-800 px-4 py-2 rounded">
+            {{ session('success') }}
+        </div>
     </div>
 @endif
+
 
 {{-- Laravel form building --}}
 
@@ -97,7 +100,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="6" class="px-6 py-4 text-center text-gray-400">
+                <td colspan="7" class="px-6 py-4 text-center text-red-600">
                     Geen gerechten gevonden.
                 </td>
             </tr>

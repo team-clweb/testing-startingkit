@@ -42,16 +42,13 @@
 @error('image')
 <div class="text-red-600">{{ $message }}</div>
 @enderror
-
 <label for="image">Afbeelding:</label>
 <input type="file" name="image" accept="image/*" class="mb-4"><br>
-
 
 @foreach($ingredients as $id => $ingredient)
     {{ html()->checkbox('recipe.ingredients[]', in_array($id, old('recipe.ingredients', [])), $id) }} {{$ingredient}}<br />
     {{ html()->text('recipe_ingredients[' . $id . '][quantity]', old('recipe_ingredients.' . $id . '.quantity')) }}<br />
 @endforeach
-
 
 <x-button.index type="submit">
     Toevoegen

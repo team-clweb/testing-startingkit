@@ -23,6 +23,4 @@
     {{html()->text('recipe.ingredients[' . $id . '][quantity]',optional(optional($dish->recipe->ingredients->firstWhere('id', $id))->pivot)->quantity) }}<br />
 @endforeach
 
-
-
 <x-button.index type="submit">Opslaan</x-button.index>

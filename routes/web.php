@@ -5,7 +5,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DishesController;
 use App\Http\Controllers\IngredientsController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\FaqController;
 
+Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+
+Route::get('/register', [RegistrationController::class, 'create'])->name('register');
+Route::post('/register', [RegistrationController::class, 'store']);
+
+Route::get('/login', [LoginController::class, 'create'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,4 +54,5 @@ Route::get('/ingredients/edit/{ingredient}', [IngredientsController::class, 'edi
 Route::put('/ingredients/update/{ingredient}', [IngredientsController::class, 'update'])->name('ingredients.update');
 Route::delete('/ingredients/{ingredient}', [IngredientsController::class, 'destroy'])->name('ingredients.destroy');
 
-require __DIR__.'/auth.php';
+
+//require __DIR__.'/auth.php';

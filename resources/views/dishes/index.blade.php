@@ -7,6 +7,7 @@
     <title>Gerechten</title>
 </head>
 <body>
+@include('includes._navbar')
 {{-- code afkomstig van https://flowbite.com/docs/components/jumbotron/ --}}
 <section class="bg-white">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
@@ -39,7 +40,9 @@
         <tr>
             <th class="px-6 py-3">Naam</th>
             <th class="px-6 py-3">Beschrijving</th>
-            <th class="px-6 py-3">Recept</th>
+            @can('view', App\Models\Dish::class)
+                <th class="px-6 py-3">Recept</th>
+            @endcan
             <th class="px-6 py-3">Afbeelding</th>
 
         @can('view', App\Models\Dish::class)
@@ -60,7 +63,9 @@
             <tr class="hover:bg-gray-50">
                 <td class="px-6 py-4">{{ $dish->name }}</td>
                 <td class="px-6 py-4">{{ $dish->description ?? 'Geen beschrijving' }}</td>
-                <td class="px-6 py-4">{{ $dish->recipe->instructions}}</td>
+                @can('view', $dish)
+                    <td class="px-6 py-4">{{ $dish->recipe->instructions }}</td>
+                @endcan
 
                 <td class="px-6 py-4">
                     @if($dish->image)
@@ -109,5 +114,9 @@
     </table>
 </div>
 {{ $dishes->links() }}
+<div class="mt-20">
+    @include('includes._footer')
+</div>
+
 </body>
 </html>

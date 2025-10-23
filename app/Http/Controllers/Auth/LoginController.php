@@ -40,7 +40,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect('/');
     }
 
     public function destroy(Request $request): RedirectResponse
@@ -51,6 +51,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
+        //return redirect(route('dashboard', absolute: false));
         return redirect('/');
     }
 

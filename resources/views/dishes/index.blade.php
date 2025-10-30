@@ -29,10 +29,11 @@
 {{-- Laravel form building --}}
 
 @can('update', App\Models\Dish::class)
-<p>
-    {!! html()->a(route('dishes.create'), 'Nieuw gerecht toevoegen')->class('text-blue-600') !!}
-</p>
+    <p class="relative -top-4">
+        {!! html()->a(route('dishes.create'), 'Nieuw gerecht toevoegen +')->class('py-3 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700') !!}
+    </p>
 @endcan
+
 {{-- code afkomstig van https://flowbite.com/docs/components/tables/ --}}
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full table-fixed text-sm text-center text-gray-500">
@@ -113,7 +114,9 @@
         </tbody>
     </table>
 </div>
+
 {{ $dishes->links() }}
+
 <div class="mt-20">
     @include('includes._footer')
 </div>

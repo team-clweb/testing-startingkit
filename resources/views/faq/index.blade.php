@@ -76,11 +76,13 @@
                 </div>
             </div>
         </div>
-        <p class="text-center text-gray-600 textbase mt-9">
+        <p class="text-center text-gray-600 text-base mt-9">
             Nog steeds vragen?
-            <span class="cursor-pointer font-medium text-tertiary transition-all duration-200 hover:text-tertiary focus:text-tertiary hover-underline">Contact
-                ons hier
-            </span>
+            <a href="{{ route('support') }}"
+               class="cursor-pointer font-medium text-tertiary transition-all duration-200 hover:text-tertiary focus:text-tertiary underline hover:no-underline">
+                Contact ons hier
+            </a>
+        </p>
         </p>
     </div>
     <script>

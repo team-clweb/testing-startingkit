@@ -8,8 +8,10 @@ use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\SupportController;
 
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+Route::get('/support', [SupportController::class, 'index'])->name('support');
 
 Route::get('/register', [RegistrationController::class, 'create'])->name('register');
 Route::post('/register', [RegistrationController::class, 'store']);

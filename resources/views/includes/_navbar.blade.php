@@ -25,6 +25,7 @@
                        dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li><a href="{{ route('dishes.index') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Menu</a></li>
                 <li><a href="{{ route('faq') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">FAQ</a></li>
+                <li><a href="{{ route('support') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Contact</a></li>
                 @if (Route::has('login'))
                     @auth
                         <li>

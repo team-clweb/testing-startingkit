@@ -7,6 +7,7 @@
     <title>Ingrediënt</title>
 </head>
 <body>
+@include('includes._navbar')
 {{-- code afkomstig van https://flowbite.com/docs/components/jumbotron/ --}}
 <section class="bg-white">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
@@ -72,5 +73,9 @@
     </table>
 </div>
 {{ $ingredients->links() }}
+
+<div class="mt-20">
+    @include('includes._footer')
+</div>
 </body>
 </html>

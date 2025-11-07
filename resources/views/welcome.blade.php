@@ -49,10 +49,9 @@
     </p>
 </section>
 
-
-<image-section class="flex bg-gray bg-[#E5E5E5]">
-      <img src="{{ asset('restaurant2.jpg') }}" class="w-1/2 object-left ml-12">
-      <img src="{{ asset('restaurant3.jpg') }}" class="w-1/2 object-right mr-12">
+<image-section class="flex bg-gray bg-[#E5E5E5] px-12">
+      <img src="{{ asset('restaurant2.jpg') }}" class="w-1/2 object-cover">
+      <img src="{{ asset('restaurant3.jpg') }}" class="w-1/2 object-cover">
 </image-section>
 
 <section-2 class="p-4  flex justify-between bg-[#E5E5E5]">
@@ -65,6 +64,20 @@
     </p>
 </section-2>
 
+<image-section class="flex bg-gray bg-[#E5E5E5] px-12">
+    <img src="{{ asset('restaurant5.jpg') }}" class="w-1/2 object-cover">
+    <img src="{{ asset('restaurant6.jpg') }}" class="w-1/2 object-cover">
+</image-section>
+
+<section-3 class="p-4  flex justify-between bg-[#E5E5E5]">
+    <p class="text-4xl font-semibold font-serif ml-36 mt-5">
+        Lorem ipsum dolor sit amet
+    </p>
+
+    <p class="max-w-lg text-xl mr-36">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus dolor in iste labore nostrum pariatur provident quaerat ratione temporibus voluptatum.
+    </p>
+</section-3>
 
 @include('includes._footer')
 

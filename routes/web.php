@@ -10,19 +10,10 @@ use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\SupportController;
 
-Route::get('/faq', [FaqController::class, 'index'])->name('faq');
-Route::get('/support', [SupportController::class, 'index'])->name('support');
-
-Route::get('/register', [RegistrationController::class, 'create'])->name('register');
-Route::post('/register', [RegistrationController::class, 'store']);
-
-Route::get('/login', [LoginController::class, 'create'])->name('login');
-Route::post('/login', [LoginController::class, 'store']);
-Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
-
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,6 +24,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+
+Route::get('/support', [SupportController::class, 'index'])->name('support');
+Route::post('/support/store', [SupportController::class, 'store'])->name('support.store');
 
 Route::get('/index', [ContactController::class, 'index'])->name('contact.index');
 Route::get('/create', [ContactController::class, 'create'])->name('contact.create');
@@ -56,5 +52,4 @@ Route::get('/ingredients/edit/{ingredient}', [IngredientsController::class, 'edi
 Route::put('/ingredients/update/{ingredient}', [IngredientsController::class, 'update'])->name('ingredients.update');
 Route::delete('/ingredients/{ingredient}', [IngredientsController::class, 'destroy'])->name('ingredients.destroy');
 
-
-//require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';

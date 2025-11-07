@@ -23,6 +23,11 @@
             <ul class="font-medium flex flex-col md:flex-row items-center p-4 md:p-0 mt-4 border border-gray-100
                        rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white
                        dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                @can('viewAny', App\Models\Ingredient::class)
+                    <li>
+                        <a href="{{ route('ingredients.index') }}"="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Ingrediënten</a>
+                    </li>
+                @endcan
                 <li><a href="{{ route('dishes.index') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Menu</a></li>
                 <li><a href="{{ route('faq') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">FAQ</a></li>
                 <li><a href="{{ route('support') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Contact</a></li>

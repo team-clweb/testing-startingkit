@@ -9,11 +9,13 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\SupportController;
+use App\Http\Controllers\ReservationController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

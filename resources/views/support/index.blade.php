@@ -39,8 +39,7 @@
     </h1>
 
     <div class="flex justify-start w-full mt-10 items-start ml-32">
-        <form method="POST" action="{{ route('support.store') }}" class="space-y-4 w-1/2 ml-10">
-            @csrf
+            {{ html()->form('POST', route('support.store'))->class('space-y-4 w-1/2 ml-10')->open() }}
             <div class="flex space-x-4">
 
                 @error('firstname')
@@ -75,7 +74,7 @@
             <textarea name ="message" placeholder="Bericht" class="w-full h-32 border border-gray-400 rounded" required></textarea>
 
             <button type="submit" class="bg-[#4B3A2F] text-white px-6 py-2 rounded">Verstuur</button>
-        </form>
+        {{ html()->closeModelForm() }}
         <img src="/chef-man-cap.svg" class="h-44 mt-10 ml-32"/>
     </div>
 </div>

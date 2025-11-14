@@ -18,7 +18,7 @@
 @include('includes._navbar')
 
 {{-- code afkomstig van https://flowbite.com/docs/components/jumbotron/ --}}
-<section class="bg-white">
+<section class="bg-white relative">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
             Ontdek de smaak van ons restaurant
@@ -29,8 +29,15 @@
         <a href="{{ route('dishes.index') }}" class="py-3 px-5 sm:ms-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
             Bekijk ons menu
         </a>
+
+        @if(session('success'))
+            <p class="text-green-500 font-bold text-3xl mt-10">
+                {{ session('success') }}
+            </p>
+        @endif
     </div>
 </section>
+
 
 <main class="h-[75vh] relative flex items-center justify-center">
     <img src="{{ asset('restaurant.webp') }}" class="absolute w-full h-full object-cover z-0">
@@ -92,34 +99,78 @@
     <div class="bg-white rounded-lg max-w-md w-full p-6 relative ">
         <h2 class="text-2xl font-semibold mb-4">Reserveer een tafel</h2>
 
+        @if(session('error'))
+            <div class="text-red-600 mb-4">
+                {{ session('error') }}
+            </div>
+        @endif
+
         {{ html()->form('POST', route('reservations.store'))->class('space-y-4')->open() }}
             <div>
+                @error('name')
+                <div class="text-red-600">{{ $message }}</div>
+                @enderror
                 <label class="font-medium">Naam</label>
-                <input type="text" name="name" class="w-full border rounded px-3 py-2" required>
+                <input type="text" name="name" value="{{ old('name') }}" class="w-full border rounded px-3 py-2" required>
             </div>
             <div>
+                @error('email')
+                <div class="text-red-600">{{ $message }}</div>
+                @enderror
                 <label class="font-medium">E-mailadres</label>
-                <input type="email" name="email" class="w-full border rounded px-3 py-2" required>
+                <input type="email" name="email" value="{{ old('email') }}" class="w-full border rounded px-3 py-2" required>
             </div>
             <div>
+                @error('phone')
+                <div class="text-red-600">{{ $message }}</div>
+                @enderror
                 <label class="font-medium">Telefoonnummer</label>
-                <input type="tel" name="phone" class="w-full border rounded px-3 py-2" required>
+                <input type="tel" name="phone" value="{{ old('phone') }}" class="w-full border rounded px-3 py-2" required>
             </div>
             <div>
+                @error('date')
+                <div class="text-red-600">{{ $message }}</div>
+                @enderror
                 <label class="font-medium">Datum</label>
-                <input type="date" name="date" class="w-full border rounded px-3 py-2" required>
+                <input type="date" name="date" value="{{ old('date') }}" class="w-full border rounded px-3 py-2" required>
             </div>
             <div>
+                @error('time')
+                <div class="text-red-600">{{ $message }}</div>
+                @enderror
                 <label class="font-medium">Tijd</label>
-                <input type="time" name="time" class="w-full border rounded px-3 py-2" required>
+                <select name="time" class="w-full border rounded px-3 py-2" required>
+                    @php
+                        $times = [
+                            '18:00', '18:30',
+                            '19:00', '19:30',
+                            '20:00', '20:30',
+                            '21:00', '21:30'
+                        ];
+                    @endphp
+
+                    <option value="">Kies een tijd</option>
+
+                    @foreach($times as $time)
+                        <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>
+                            {{ $time }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             <div>
+                @error('persons')
+                <div class="text-red-600">{{ $message }}</div>
+                @enderror
                 <label class="font-medium">Aantal personen</label>
-                <input type="number" name="persons" class="w-full border rounded px-3 py-2" required>
+                <input type="number" name="persons" value="{{ old('persons') }}" class="w-full border rounded px-3 py-2" required>
             </div>
             <div>
+                @error('message')
+                <div class="text-red-600">{{ $message }}</div>
+                @enderror
                 <label class="font-medium">Opmerking</label>
-                <textarea name="message" id="message " cols="5" rows="5"  class="w-full border rounded focus:ring-blue-700 focus:border-blue-700" placeholder="Schrijf hier je opmerking..."></textarea>
+                <textarea name="message" id="message" value="{{ old('message') }}" cols="5" rows="5" class="w-full border rounded focus:ring-blue-700 focus:border-blue-700" placeholder="Schrijf hier je opmerking..."></textarea>
             </div>
 
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Verzenden</button>
@@ -128,6 +179,21 @@
         <a href="#" class="absolute top-3 right-4 text-gray-600 text-2xl mt-3">x</a>
     </div>
 </div>
+
+{{-- code van https://stackoverflow.com/questions/33459143/keeping-modal-dialog-open-after-validation-error-laravel (reactie Sania Yousuf) --}}
+{{-- gebruikt zodat de modal openblijft na een validatie error --}}
+<script>
+    function openReservationModal() {
+        document.getElementById('reservering-modal').style.display = 'flex';
+    }
+
+    @if ($errors->any() || session('error'))
+    window.addEventListener('DOMContentLoaded', function() {
+        openReservationModal();
+    });
+    @endif
+</script>
+
 
 @include('includes._footer')
 

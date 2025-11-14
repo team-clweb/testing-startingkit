@@ -23,7 +23,7 @@ class ReservationRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:80',
-            'phone' => 'required|string|regex:/^[ 0-9+\s()-]+$/|max:20',
+            'phone' => 'required|string|regex:/^[ 0-9+\s()-]+$/|max:15',
             'email' => 'required|email:rfc,dns',
             'date' => 'required|date|after_or_equal:today',
             'time' => 'required|date_format:H:i',

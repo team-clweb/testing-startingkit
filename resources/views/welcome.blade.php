@@ -131,7 +131,7 @@
                 @error('date')
                 <div class="text-red-600">{{ $message }}</div>
                 @enderror
-                <label class="font-medium">Datum</label>
+                <label class="font-medium">Reserveringsdatum</label>
                 <input type="date" name="date" value="{{ old('date') }}" class="w-full border rounded px-3 py-2" required>
             </div>
             <div>

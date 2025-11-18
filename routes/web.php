@@ -16,6 +16,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

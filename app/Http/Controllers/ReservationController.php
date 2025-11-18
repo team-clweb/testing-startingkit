@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ReservationController extends Controller
 {
+
+    public function index()
+    {
+        $this->authorize('viewAny', Reservation::class);
+
+        $reservations = DB::table('reservations')->orderBy('date', 'asc')->paginate(10);
+
+        return view('reservations.index', compact('reservations'));
+    }
     public function store(ReservationRequest $request)
     {
         $validated = $request->validated();

@@ -16,6 +16,32 @@ class ReservationController extends Controller
 
         return view('reservations.index', compact('reservations'));
     }
+
+    public function edit(Reservation $reservation)
+    {
+        $this->authorize('update', $reservation);
+
+        return view('reservations.edit', compact('reservation'));
+    }
+
+    public function update(ReservationRequest $request, Reservation $reservation)
+    {
+        $this->authorize('update', $reservation);
+
+        $validated = $request->validated();
+
+        $reservation->update([
+            'name' => $validated['name'],
+            'phone' => $validated['phone'],
+            'email' => $validated['email'],
+            'date' => $validated['date'],
+            'time' => $validated['time'],
+            'persons' => $validated['persons'],
+            'message' => $validated['message'],
+        ]);
+
+        return redirect()->route('reservations.index')->with('success', 'Reservering bijgewerkt.');
+    }
     public function store(ReservationRequest $request)
     {
         $validated = $request->validated();
@@ -40,5 +66,14 @@ class ReservationController extends Controller
         ]);
 
         return back()->with('success', 'Je reservering is succesvol verzonden!');
+    }
+
+    public function destroy(Reservation $reservation)
+    {
+        $this->authorize('delete', $reservation);
+
+        $reservation->delete();
+
+        return redirect()->route('reservations.index')->with('success', 'Reservering is succesvol geannuleerd.');
     }
 }

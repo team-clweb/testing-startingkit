@@ -106,7 +106,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="7" class="px-6 py-4 text-center text-red-600">
+                <td colspan="3" class="px-6 py-4 text-center text-red-600">
                     Geen gerechten gevonden.
                 </td>
             </tr>

@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
 Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+Route::get('/reservations/edit/{reservation}', [ReservationController::class, 'edit'])->name('reservations.edit');
+Route::put('/reservations/update/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
+Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

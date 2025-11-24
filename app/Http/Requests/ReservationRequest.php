@@ -22,13 +22,42 @@ class ReservationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:80',
+            'name' => 'required|alpha|max:80',
             'phone' => 'required|string|regex:/^[ 0-9+\s()-]+$/|max:12',
             'email' => 'required|email:rfc,dns',
             'date' => 'required|date|after_or_equal:today',
-            'time' => 'required|date_format:H:i',
+            'time' => 'required|string',
             'persons' => 'required|integer|min:1|max:12',
             'message' => 'nullable|string|max:300',
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Naam is verplicht.',
+            'name.alpha' => 'Naam moet tekst zijn.',
+            'name.max' => 'Naam mag niet langer zijn dan 80 tekens.',
+
+            'phone.required' => 'Telefoonnummer is verplicht.',
+            'phone.string' => 'Telefoonnummer moet tekst zijn.',
+            'phone.regex' => 'Telefoonnummer is niet geldig.',
+            'phone.max' => 'Telefoonnummer mag niet langen zijn dan 12 tekens.',
+
+            'email.required' => 'Het e-mailadres is verplicht.',
+            'email.email' => 'Het e-mailadres moet een geldig zijn.',
+
+            'date.required' => 'Datum is verplicht.',
+            'date.after_or_equal' => 'Deze datum is niet mogelijk',
+
+            'time.required' => 'Tijd is verplicht.',
+            'time.string' => 'Tijd moet een getal zijn.',
+
+            'persons.required' => 'Aantal personen is verplicht.',
+            'persons.integer' => 'Aantal personen moet een getal zijn.',
+            'persons.min' => 'Er moet minimaal 1 persoon zijn.',
+            'persons.max' => 'Het maximale personen is 12.',
+
+            'message.max' => 'Het bericht mag niet langer zijn dan 300 tekens.',
         ];
     }
 }

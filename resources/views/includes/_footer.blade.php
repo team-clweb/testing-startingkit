@@ -14,12 +14,12 @@
             <div>
                 <h2 class="mb-4 text-sm font-semibold uppercase text-center">Openingstijden restaurant</h2>
                 <ul class="text-gray-600 dark:text-gray-400 font-medium text-center space-y-1">
-                    <li>Dinsdag: 18:00 t/m 22:00</li>
-                    <li>Woensdag: 18:00 t/m 22:00</li>
-                    <li>Donderdag: 17:00 t/m 22:00</li>
-                    <li>Vrijdag: 11:00 t/m 22:00</li>
-                    <li>Zaterdag: 10:00 t/m 22:00</li>
-                    <li>Zondag: 10:00 t/m 21:00</li>
+                    <li>Dinsdag: 17:30 t/m 21:00</li>
+                    <li>Woensdag: 17:30 t/m 21:00</li>
+                    <li>Donderdag: 17:30 t/m 21:00</li>
+                    <li>Vrijdag: 17:30 t/m 21:00</li>
+                    <li>Zaterdag: 17:30 t/m 21:00</li>
+                    <li>Zondag: 17:30 t/m 21:00</li>
                     <li>Maandag: gesloten</li>
                 </ul>
             </div>

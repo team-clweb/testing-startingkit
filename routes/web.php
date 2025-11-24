@@ -16,10 +16,6 @@ Route::get('/', function () {
 })->name('home');
 
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
-Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
-Route::get('/reservations/edit/{reservation}', [ReservationController::class, 'edit'])->name('reservations.edit');
-Route::put('/reservations/update/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
-Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,26 +32,6 @@ Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 Route::get('/support', [SupportController::class, 'index'])->name('support');
 Route::post('/support/store', [SupportController::class, 'store'])->name('support.store');
 
-Route::get('/index', [ContactController::class, 'index'])->name('contact.index');
-Route::get('/create', [ContactController::class, 'create'])->name('contact.create');
-Route::post('/store', [ContactController::class, 'store'])->name('contact.store');
-Route::get('/{contact}/edit', [ContactController::class, 'edit'])->name('contact.edit');
-Route::put('/{contact}/update', [ContactController::class, 'update'])->name('contact.update');
-Route::delete('{contact}/destroy', [ContactController::class, 'destroy'])->name('contact.destroy');
-
 Route::get('/dishes', [DishesController::class, 'index'])->name('dishes.index');
-Route::get('/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
-Route::post('/dishes/store', [DishesController::class, 'store'])->name('dishes.store');
-Route::get('/dishes/{dish}', [DishesController::class, 'show'])->name('dishes.show');
-Route::get('/dishes/edit/{dish}', [DishesController::class, 'edit'])->name('dishes.edit');
-Route::put('/dishes/update/{dish}', [DishesController::class, 'update'])->name('dishes.update');
-Route::delete('/dishes/{dish}', [DishesController::class, 'destroy'])->name('dishes.destroy');
-
-Route::get('/ingredients', [IngredientsController::class, 'index'])->name('ingredients.index');
-Route::get('/ingredients/create', [IngredientsController::class, 'create'])->name('ingredients.create');
-Route::post('/ingredients/store', [IngredientsController::class, 'store'])->name('ingredients.store');
-Route::get('/ingredients/edit/{ingredient}', [IngredientsController::class, 'edit'])->name('ingredients.edit');
-Route::put('/ingredients/update/{ingredient}', [IngredientsController::class, 'update'])->name('ingredients.update');
-Route::delete('/ingredients/{ingredient}', [IngredientsController::class, 'destroy'])->name('ingredients.destroy');
 
 require __DIR__.'/auth.php';

@@ -111,28 +111,28 @@
                 <div class="text-red-600">{{ $message }}</div>
                 @enderror
                 <label class="font-medium">Naam</label>
-                <input type="text" name="name" value="{{ old('name') }}" class="w-full border rounded px-3 py-2" required>
-            </div>
-            <div>
-                @error('email')
-                <div class="text-red-600">{{ $message }}</div>
-                @enderror
-                <label class="font-medium">E-mailadres</label>
-                <input type="email" name="email" value="{{ old('email') }}" class="w-full border rounded px-3 py-2" required>
+                {{ html()->text('name')->class('border rounded w-full py-2 px-3')->placeholder('Naam')->required()}}
             </div>
             <div>
                 @error('phone')
                 <div class="text-red-600">{{ $message }}</div>
                 @enderror
                 <label class="font-medium">Telefoonnummer</label>
-                <input type="tel" name="phone" value="{{ old('phone') }}" class="w-full border rounded px-3 py-2" required>
+                {{ html()->text('phone')->class('border rounded w-full py-2 px-3')->placeholder('Telefoonnummer')->required()}}
+            </div>
+            <div>
+                @error('email')
+                <div class="text-red-600">{{ $message }}</div>
+                @enderror
+                <label class="font-medium">Email</label>
+                {{ html()->email('email')->class('border rounded w-full py-2 px-3')->placeholder('Email')->required()}}
             </div>
             <div>
                 @error('date')
                 <div class="text-red-600">{{ $message }}</div>
                 @enderror
                 <label class="font-medium">Reserveringsdatum</label>
-                <input type="date" name="date" value="{{ old('date') }}" class="w-full border rounded px-3 py-2" required>
+                {{ html()->date('date')->class('border rounded w-full py-2 px-3')->required()}}
             </div>
             <div>
                 @error('time')
@@ -142,19 +142,18 @@
                 <select name="time" class="w-full border rounded px-3 py-2" required>
                     @php
                         $times = [
-                            '18:00', '18:30',
-                            '19:00', '19:30',
-                            '20:00', '20:30',
-                            '21:00', '21:30'
+                            '17:30 - 18:30',
+                            '18:00 - 19:30',
+                            '19:00 - 20:30',
+                            '19:30 - 21:00',
+                            '20:00 - 21:00'
                         ];
                     @endphp
 
                     <option value="">Kies een tijd</option>
 
                     @foreach($times as $time)
-                        <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>
-                            {{ $time }}
-                        </option>
+                        <option {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
                     @endforeach
                 </select>
             </div>
@@ -163,20 +162,20 @@
                 <div class="text-red-600">{{ $message }}</div>
                 @enderror
                 <label class="font-medium">Aantal personen</label>
-                <input type="number" name="persons" value="{{ old('persons') }}" class="w-full border rounded px-3 py-2" required>
+                {{ html()->number('persons')->class('border rounded w-full py-2 px-3')->placeholder('Personen')->required()}}
             </div>
             <div>
                 @error('message')
                 <div class="text-red-600">{{ $message }}</div>
                 @enderror
                 <label class="font-medium">Opmerking</label>
-                <textarea name="message" id="message" value="{{ old('message') }}" cols="5" rows="5" class="w-full border rounded focus:ring-blue-700 focus:border-blue-700" placeholder="Schrijf hier je opmerking..."></textarea>
+                {{ html()->textarea('message')->rows(5)->class('border rounded w-full py-2 px-3')->placeholder('Bericht')}}
             </div>
 
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Verzenden</button>
         {{ html()->closeModelForm() }}
 
-        <a href="#" class="absolute top-3 right-4 text-gray-600 text-2xl mt-3">x</a>
+        <button type="button" onclick="closeReservationModal()" class="absolute top-3 right-4 text-gray-600 text-2xl mt-3">x</button>
     </div>
 </div>
 
@@ -185,6 +184,11 @@
 <script>
     function openReservationModal() {
         document.getElementById('reservering-modal').style.display = 'flex';
+    }
+
+    {{-- gebruikt zodat je na validatie error nog steeds de modal kan sluiten --}}
+    function closeReservationModal() {
+        document.getElementById('reservering-modal').style.display = 'none';
     }
 
     @if ($errors->any() || session('error'))

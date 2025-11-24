@@ -27,4 +27,20 @@ class IngredientRequest extends FormRequest
             'quantity' => 'required|numeric|min:0',
         ];
     }
+    public function messages()
+    {
+        return [
+            'name.required' => 'De naam van het ingrediënt is verplicht.',
+            'name.string' => 'De naam van het ingrediënt moet tekst zijn.',
+            'name.max' => 'De naam van het ingrediënt mag niet langer zijn dan 80 tekens.',
+
+            'unit.required' => 'Eenheid is verplicht.',
+            'unit.string' => 'Eenheid moet tekst zijn.',
+            'unit.max' => 'Eenheid mag niet langer zijn dan 30 tekens.',
+
+            'quantity.required' => 'Opslag is verplicht.',
+            'quantity.numeric' => 'Opslag moet een getal zijn.',
+            'quantity.min' => 'Opslag mag niet negatief zijn.',
+        ];
+    }
 }

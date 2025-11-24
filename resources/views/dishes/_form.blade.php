@@ -2,21 +2,19 @@
 <div class="text-red-600">{{ $message }}</div>
 @enderror
 <label for="name">Naam gerecht:</label>
-<x-input name="name" :value="old('name', $dish->name)" placeholder="Naam" /><br>
-<!--voorbeeld -->
-<!--{{html()->text('name',null)->class('border rounded w-full py-2 px-3')->placeholder('Naam gerecht')->required()}} -->
+{{html()->text('name')->class('border rounded w-full py-2 px-3 mb-3')->placeholder('Naam gerecht')->required()}}
 
 @error('description')
 <div class="text-red-600">{{ $message }}</div>
 @enderror
 <label for="description">Omschrijving:</label>
-<x-input name="description" :value="old('description', $dish->description)" placeholder="Omschrijving" /><br>
+{{html()->text('description',null)->class('border rounded w-full py-2 px-3 mb-3')->placeholder('Omschrijving')}}
 
 @error('instructions')
 <div class="text-red-600">{{ $message }}</div>
 @enderror
 <label for="instructions">Recept:</label>
-<x-input name="instructions" :value="old('instructions', $dish->recipe->instructions ?? '')" placeholder="Recept" /><br>
+{{ html()->text('instructions', old('instructions', $dish->recipe->instructions ?? ''))->class('border rounded w-full py-2 px-3 mb-3')->placeholder('Recept')->required()}}
 
 @foreach($ingredients as $id => $ingredient)
     {{html()->checkbox('recipe.ingredients[]',$dish->recipe->ingredients()->where('ingredients.id',$id)->exists(),$id)}} {{$ingredient}}<br />

@@ -1,14 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
+        {{-- code afkomstig van https://flowbite.com/docs/components/jumbotron/ --}}
         <section class="bg-white">
             <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
                 <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-                    {{ __('Reserveringen overzicht') }}
+                    {{ __('Reserveringen') }}
                 </h1>
             </div>
         </section>
     </x-slot>
 
+    {{-- code afkomstig van https://flowbite.com/docs/components/tables/ --}}
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white mb-20">
         <table class="w-full table-fixed text-sm text-center text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -24,7 +26,7 @@
                 <th class="px-6 py-3">Annuleren</th>
             </tr>
             </thead>
-            <tbody class="bg-white">
+            <tbody class="divide-y bg-white">
             @forelse($reservations as $reservation)
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4">{{ $reservation->name }}</td>
@@ -40,14 +42,15 @@
                         </a>
                     </td>
                     <td class="px-6 py-4">
-                        <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je deze reservering wilt annuleren?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-600 hover:underline">
-                                Annuleren
-                            </button>
-                        </form>
-                   </tr>
+                        {{ html()->form('DELETE', route('reservations.destroy', $reservation->id))
+                            ->attribute('onsubmit', "return confirm('Weet je zeker dat je deze reservering wilt annuleren?');")->open() }}
+
+                        <button type="submit" class="text-red-600 hover:underline">
+                            Annuleren
+                        </button>
+                        {{ html()->closeModelForm() }}
+                    </td>
+                </tr>
             @empty
                 <tr>
                     <td colspan="9" class="px-6 py-4 text-center text-red-600">
@@ -57,8 +60,8 @@
             @endforelse
             </tbody>
         </table>
-        <div class="p-4">
-            {{ $reservations->links() }}
-        </div>
+    </div>
+    <div class="p-4">
+        {{ $reservations->links() }}
     </div>
 </x-app-layout>

@@ -9,6 +9,10 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\IngredientsController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\DishesController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -56,4 +60,23 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+    Route::get('/ingredients', [IngredientsController::class, 'index'])->name('ingredients.index');
+    Route::get('/ingredients/create', [IngredientsController::class, 'create'])->name('ingredients.create');
+    Route::post('/ingredients/store', [IngredientsController::class, 'store'])->name('ingredients.store');
+    Route::get('/ingredients/edit/{ingredient}', [IngredientsController::class, 'edit'])->name('ingredients.edit');
+    Route::put('/ingredients/update/{ingredient}', [IngredientsController::class, 'update'])->name('ingredients.update');
+    Route::delete('/ingredients/{ingredient}', [IngredientsController::class, 'destroy'])->name('ingredients.destroy');
+
+    Route::get('/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
+    Route::post('/dishes/store', [DishesController::class, 'store'])->name('dishes.store');
+    Route::get('/dishes/{dish}', [DishesController::class, 'show'])->name('dishes.show');
+    Route::get('/dishes/edit/{dish}', [DishesController::class, 'edit'])->name('dishes.edit');
+    Route::put('/dishes/update/{dish}', [DishesController::class, 'update'])->name('dishes.update');
+    Route::delete('/dishes/{dish}', [DishesController::class, 'destroy'])->name('dishes.destroy');
+
+    Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+    Route::get('/reservations/edit/{reservation}', [ReservationController::class, 'edit'])->name('reservations.edit');
+    Route::put('/reservations/update/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
+    Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
 });

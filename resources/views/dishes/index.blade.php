@@ -10,14 +10,6 @@
         </section>
     </x-slot>
 
-    @if(session('success'))
-        <div class="flex justify-center mt-4">
-            <div class="bg-green-100 text-green-800 px-4 py-2 rounded">
-                {{ session('success') }}
-            </div>
-        </div>
-    @endif
-
     {{-- Laravel form building --}}
     @can('update', App\Models\Dish::class)
         <p class="relative -top-4">
@@ -73,17 +65,21 @@
 
                     @can('view', $dish)
                         <td class="px-6 py-4">
-                            <a href="{{ route('dishes.show', $dish->id) }}" class="text-blue-600 hover:underline">
+                            {{ html()->form('GET', route('dishes.show', $dish->id))->open() }}
+                            <button type="submit" class="text-blue-600 hover:underline">
                                 Bekijk ingrediënten
-                            </a>
+                            </button>
+                            {{ html()->closeModelForm() }}
                         </td>
                     @endcan
 
                     @can('update', $dish)
                         <td class="px-6 py-4">
-                            <a href="{{ route('dishes.edit', $dish->id) }}" class="text-blue-600">
+                            {{ html()->form('GET', route('dishes.edit', $dish->id))->open() }}
+                            <button type="submit" class="text-blue-600 hover:underline">
                                 Bewerken
-                            </a>
+                            </button>
+                            {{ html()->closeModelForm() }}
                         </td>
                     @endcan
 
@@ -114,9 +110,5 @@
 
     <div class="p-4">
         {{ $dishes->links() }}
-    </div>
-
-    <div class="mt-20">
-        @include('includes._footer')
     </div>
 </x-app-layout>

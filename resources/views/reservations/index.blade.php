@@ -37,9 +37,11 @@
                     <td class="px-6 py-4">{{ $reservation->persons }}</td>
                     <td class="px-6 py-4">{{ $reservation->message ?? 'geen bericht' }}</td>
                     <td class="px-6 py-4">
-                        <a href="{{ route('reservations.edit', $reservation->id) }}" class="text-blue-600 hover:underline">
+                        {{ html()->form('GET', route('reservations.edit', $reservation->id))->open() }}
+                        <button type="submit" class="text-blue-600 hover:underline">
                             Bewerken
-                        </a>
+                        </button>
+                        {{ html()->closeModelForm() }}
                     </td>
                     <td class="px-6 py-4">
                         {{ html()->form('DELETE', route('reservations.destroy', $reservation->id))

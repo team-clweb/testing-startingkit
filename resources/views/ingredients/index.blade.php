@@ -33,10 +33,13 @@
                     <td class="px-6 py-4">{{ $ingredient->unit }}</td>
                     <td class="px-6 py-4">{{ $ingredient->stock->quantity }}</td>
                     <td class="px-6 py-4">
-                        <a href="{{ route('ingredients.edit', $ingredient->id) }}" class="text-blue-600 hover:underline">
+                        {{ html()->form('GET', route('ingredients.edit', $ingredient->id))->open() }}
+                        <button type="submit" class="text-blue-600 hover:underline">
                             Bewerken
-                        </a>
+                        </button>
+                        {{ html()->closeModelForm() }}
                     </td>
+
                     <td class="px-6 py-4">
                         {{ html()->form('DELETE', route('ingredients.destroy', $ingredient->id))
                           ->attribute('onsubmit', "return confirm('Weet je zeker dat je dit ingrediënt wilt verwijderen?');")->open()}}

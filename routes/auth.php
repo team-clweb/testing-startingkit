@@ -13,6 +13,7 @@ use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\DishesController;
+use App\Http\Controllers\OpeningHourController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -79,4 +80,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/reservations/edit/{reservation}', [ReservationController::class, 'edit'])->name('reservations.edit');
     Route::put('/reservations/update/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
     Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
+
+    Route::get('/opening-hours', [OpeningHourController::class, 'index'])->name('opening-hours.index');
+    Route::get('/opening-hours/edit/{hour}', [OpeningHourController::class, 'edit'])->name('opening-hours.edit');
+    Route::put('/opening-hours/update/{hour}', [OpeningHourController::class, 'update'])->name('opening-hours.update');
+
+
+
 });

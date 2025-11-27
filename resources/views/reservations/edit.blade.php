@@ -9,10 +9,14 @@
                 <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl">
                     Vul hieronder de gegevens in om de reservering bij te werken.
                 </p>
+                @if(session('error'))
+                    <div class="text-red-600 mb-4 text-2xl">
+                        {{ session('error') }}
+                    </div>
+                @endif
             </div>
         </section>
     </x-slot>
-
     {{-- Laravel form building --}}
     <div class="max-w-xl mx-auto">
         {{ html()->modelForm($reservation, 'PUT', route('reservations.update', $reservation->id))->class('')->open() }}

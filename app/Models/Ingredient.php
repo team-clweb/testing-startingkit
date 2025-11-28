@@ -22,4 +22,9 @@ class Ingredient extends Model
     {
         return $this->HasOne(Stock::class);
     }
+
+    public function allergies()
+    {
+        return $this->belongsToMany(Allergy::class);
+    }
 }

@@ -5,26 +5,16 @@ namespace App\Policies;
 use App\Models\User;
 use App\Models\Ingredient;
 
-class IngredientPolicy
+class AllergyPolicy
 {
-    /**
-     * index controller method
-     */
     public function viewAny(User $user)
     {
         return $user->role === 'Admin';
     }
 
-    /**
-     * show controller method
-     */
-    public function view(User $user)
-    {
-        return $user->role === 'Admin';
-    }
 
     /**
-     * create/edit controller method
+     *create/edit controller method
      */
     public function create(User $user)
     {

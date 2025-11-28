@@ -6,6 +6,7 @@ use App\Models\Dish;
 use Illuminate\Http\Request;
 use App\Models\Ingredient;
 use App\Models\Stock;
+use App\Models\Allergy;
 use App\Http\Requests\IngredientRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -46,6 +47,14 @@ class IngredientsController extends Controller
         return redirect()->route('ingredients.index')->with('success', 'Ingrediënt aangemaakt.');
     }
 
+     public function show(Ingredient $ingredient)
+     {
+         $this->authorize('view', $ingredient);
+
+         $ingredient->load('allergies');
+
+         return view('ingredients.show', compact('ingredient'));
+     }
 
     public function edit(Ingredient $ingredient)
     {

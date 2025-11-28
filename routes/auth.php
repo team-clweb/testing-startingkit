@@ -13,6 +13,7 @@ use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\DishesController;
+use App\Http\Controllers\AllergyController;
 use App\Http\Controllers\OpeningHourController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/ingredients', [IngredientsController::class, 'index'])->name('ingredients.index');
     Route::get('/ingredients/create', [IngredientsController::class, 'create'])->name('ingredients.create');
     Route::post('/ingredients/store', [IngredientsController::class, 'store'])->name('ingredients.store');
+    Route::get('/ingredients/{ingredient}', [IngredientsController::class, 'show'])->name('ingredients.show');
     Route::get('/ingredients/edit/{ingredient}', [IngredientsController::class, 'edit'])->name('ingredients.edit');
     Route::put('/ingredients/update/{ingredient}', [IngredientsController::class, 'update'])->name('ingredients.update');
     Route::delete('/ingredients/{ingredient}', [IngredientsController::class, 'destroy'])->name('ingredients.destroy');
@@ -85,6 +87,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/opening-hours/edit/{hour}', [OpeningHourController::class, 'edit'])->name('opening-hours.edit');
     Route::put('/opening-hours/update/{hour}', [OpeningHourController::class, 'update'])->name('opening-hours.update');
 
-
+    Route::get('/allergies', [AllergyController::class, 'index'])->name('allergies.index');
+    Route::get('/allergies/create', [AllergyController::class, 'create'])->name('allergies.create');
+    Route::post('/allergies', [AllergyController::class, 'store'])->name('allergies.store');
+    Route::get('/allergies/edit/{allergy}', [AllergyController::class, 'edit'])->name('allergies.edit');
+    Route::put('/allergies/update/{allergy}', [AllergyController::class, 'update'])->name('allergies.update');
+    Route::delete('/allergies/{allergy}', [AllergyController::class, 'destroy'])->name('allergies.destroy');
 
 });

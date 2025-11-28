@@ -22,6 +22,7 @@
                 <th class="px-6 py-3">Naam</th>
                 <th class="px-6 py-3">Eenheid</th>
                 <th class="px-6 py-3">Opslag</th>
+                <th class="px-6 py-3">Bekijk allergieën</th>
                 <th class="px-6 py-3">Bewerken</th>
                 <th class="px-6 py-3">Verwijderen</th>
             </tr>
@@ -32,6 +33,15 @@
                     <td class="px-6 py-4">{{ $ingredient->name }}</td>
                     <td class="px-6 py-4">{{ $ingredient->unit }}</td>
                     <td class="px-6 py-4">{{ $ingredient->stock->quantity }}</td>
+
+                    <td class="px-6 py-4">
+                        {{ html()->form('GET', route('ingredients.show', $ingredient->id))->open() }}
+                        <button type="submit" class="text-blue-600 hover:underline">
+                            Bekijk allergieën
+                        </button>
+                        {{ html()->closeModelForm() }}
+                    </td>
+
                     <td class="px-6 py-4">
                         {{ html()->form('GET', route('ingredients.edit', $ingredient->id))->open() }}
                         <button type="submit" class="text-blue-600 hover:underline">

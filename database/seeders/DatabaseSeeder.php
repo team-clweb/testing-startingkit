@@ -35,6 +35,8 @@ class DatabaseSeeder extends Seeder
             StockSeeder::class,
             IngredientRecipeSeeder::class,
             OpeningHoursSeeder::class,
+            AllergySeeder::class,
+            AllergyIngredientSeeder::class,
         ]);
     }
 }

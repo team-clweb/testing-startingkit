@@ -10,7 +10,6 @@ use App\Models\Ingredient;
 use App\Http\Requests\DishRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-//use App\Http\Controllers\Auth\AuthController;
 
 
 class DishesController extends Controller

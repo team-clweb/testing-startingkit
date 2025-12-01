@@ -71,7 +71,7 @@ class DishesController extends Controller
     {
         $this->authorize('view', $dish);
 
-        $dish->load('recipe.ingredients.stock');
+        $dish->load('recipe.ingredients.allergies', 'recipe.ingredients.stock');
 
         return view('dishes.show', compact('dish'));
     }

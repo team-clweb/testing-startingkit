@@ -24,6 +24,15 @@
                 @foreach($dish->recipe->ingredients as $ingredient)
                     <li>
                         {{ $ingredient->name }} - {{ $ingredient->pivot->quantity }} {{ $ingredient->unit }} - Voorraad: {{ $ingredient->stock->quantity }}
+
+                        @if($ingredient->allergies->isNotEmpty())
+                            - Allergieën:
+                            @foreach($ingredient->allergies as $allergy)
+                                {{ $allergy->name }}@if(!$loop->last),@endif
+                            @endforeach
+                        @else
+                            - Geen allergieën
+                        @endif
                     </li>
                 @endforeach
             </ul>

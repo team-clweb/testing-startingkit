@@ -1,10 +1,11 @@
 {{-- code afkomstig van https://flowbite.com/docs/components/navbar/ --}}
 <nav class="bg-white shadow-lg sticky top-0 z-50">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse -ml-40">
             <img src="/chef-man-cap.svg" class="h-8" alt="Chef logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Restaurant Dennis</span>
         </a>
+
 
         <button data-collapse-toggle="navbar-default" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg
@@ -21,6 +22,11 @@
             <ul class="font-medium flex flex-col md:flex-row items-center p-4 md:p-0 mt-4 border border-gray-100
                        rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white
                        dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    @can('viewAny', App\Models\OpeningHour::class)
+                    <li>
+                        <a href="{{ route('opening-hours.index') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Openingstijden</a>
+                    </li>
+                    @endcan
                     @can('viewAny', App\Models\Reservation::class)
                     <li>
                          <a href="{{ route('reservations.index') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Reserveringen</a>

@@ -12,9 +12,9 @@
 
     <div class="flex flex-row justify-center my-12">
         {{-- Code afkomstig van https://flowbite.com/docs/components/card/ --}}
-        <div class="block p-12 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 max-w-3xl w-full">
+        <div class="block p-12 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 max-w-2xl w-full">
             @if($ingredient->allergies->isEmpty())
-                <p class="text-gray-600 mb-3 text-red-700 font-bold">Er zijn geen allergieën gekoppeld aan dit ingrediënt.</p>
+                <p class="text-red-700 font-bold text-lg text-center">Er zijn geen allergieën gekoppeld aan {{strtolower($ingredient->name) }}</p>
             @else
                 <h2 class="mb-2 text-lg font-semibold text-gray-900">Allergieën</h2>
                 <ul class="mb-3 list-disc list-inside text-gray-700 space-y-1">
@@ -27,7 +27,6 @@
             @endif
         </div>
     </div>
-
 
     <p class="mt-4 text-center">
         <a href="{{ route('ingredients.index') }}" class="text-blue-600 hover:underline">Terug naar overzicht</a>

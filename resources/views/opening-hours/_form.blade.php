@@ -21,8 +21,12 @@
 <div class="text-red-600">{{ $message }}</div>
 @enderror
 <label for="closed">
-    {{ html()->checkbox('closed', $openingHour->closed ?? false)->value(1) }}
+    {{ html()->checkbox('closed')
+        ->checked(old('closed', $hour->closed ?? false))
+        ->value(1)
+    }}
     Gesloten
 </label><br>
+
 
 <x-button.index type="submit">Opslaan</x-button.index>

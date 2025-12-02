@@ -42,7 +42,9 @@
 
 <select name="time" class="border rounded w-full px-3 py-2 mb-3" required>
     @foreach($times as $time)
-        <option {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
+        <option value="{{ $time }}" {{ (old('time', $reservation->time) == $time) ? 'selected' : '' }}>
+            {{ $time }}
+        </option>
     @endforeach
 </select>
 

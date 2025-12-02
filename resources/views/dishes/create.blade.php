@@ -39,9 +39,10 @@
     <label for="image">Afbeelding:</label>
     {{ html()->file('image')->accept('image/*')->class('mb-4') }}<br>
 
+    <label class="font-bold">Ingrediënten:</label><br><br>
     @foreach($ingredients as $id => $ingredient)
         {{ html()->checkbox('recipe.ingredients[]', in_array($id, old('recipe.ingredients', [])), $id) }} {{$ingredient}}<br />
-        {{ html()->text('recipe_ingredients[' . $id . '][quantity]', old('recipe_ingredients.' . $id . '.quantity'))->class('border rounded w-full py-2 px-3 mb-3') }}<br />
+        {{ html()->text('recipe_ingredients[' . $id . '][quantity]', old('recipe_ingredients.' . $id . '.quantity'))->class('border rounded w-full py-2 px-3 mb-3')->placeholder('Hoeveel heb je nodig?') }}<br />
     @endforeach
 
     <x-button.index type="submit">

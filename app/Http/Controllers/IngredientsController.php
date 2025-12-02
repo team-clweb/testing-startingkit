@@ -25,7 +25,10 @@ class IngredientsController extends Controller
     public function create()
     {
         $this->authorize('create', Ingredient::class);
-        return view('ingredients.create');
+
+        $allergies = Allergy::all()->pluck('name', 'id')->all();
+
+        return view('ingredients.create', compact('allergies'));
     }
 
     public function store(IngredientRequest $request)
@@ -44,6 +47,8 @@ class IngredientsController extends Controller
             'delivery_date' => now(),
         ]);
 
+        $ingredient->allergies()->sync($request->input('allergies', []));
+
         return redirect()->route('ingredients.index')->with('success', 'Ingrediënt aangemaakt.');
     }
 
@@ -58,9 +63,13 @@ class IngredientsController extends Controller
 
     public function edit(Ingredient $ingredient)
     {
-
         $this->authorize('update', $ingredient);
-        return view('ingredients.edit', compact('ingredient'));
+
+        $ingredient->load('allergies');
+
+        $allergies = Allergy::all()->pluck('name', 'id')->all();
+
+        return view('ingredients.edit', compact('allergies', 'ingredient'));
     }
 
     public function update(IngredientRequest $request, Ingredient $ingredient)
@@ -77,6 +86,8 @@ class IngredientsController extends Controller
         $ingredient->stock->update([
             'quantity' => $validated['quantity'],
         ]);
+
+        $ingredient->allergies()->sync($request->input('allergies', []));
 
         return redirect()->route('ingredients.index')->with('success', 'Ingrediënt bijgewerkt.');
     }

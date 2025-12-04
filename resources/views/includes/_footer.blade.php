@@ -1,15 +1,16 @@
-{{-- code afkomstig van https://flowbite.com/docs/components/footer/ --}}
 <footer class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
-    <div class="mx-auto w-full max-w-screen-xl px-4 py-8 lg:py-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {{-- Contactgegevens --}}
-            <div>
-                <h2 class="mb-4 text-sm font-semibold uppercase">Contact</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-2">Rijndijk 12, 3606 PG Utrecht</p>
-                <p class="text-gray-600 dark:text-gray-400 mb-2">(030) 309 98 38</p>
-                <p class="text-gray-600 dark:text-gray-400">restaurant@dennis.nl</p>
-            </div>
+    <div class="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
 
+            {{-- Contactgegevens --}}
+            <div class="flex justify-center md:justify-start">
+                <div class="text-center md:text-left">
+                    <h2 class="mb-4 text-sm font-semibold uppercase">Contact</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-2">Rijndijk 12, 3606 PG Utrecht</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-2">(030) 309 98 38</p>
+                    <p class="text-gray-600 dark:text-gray-400">restaurant@dennis.nl</p>
+                </div>
+            </div>
             {{-- Openingstijden --}}
             <div>
                 <h2 class="mb-4 text-sm font-semibold uppercase text-center">
@@ -35,9 +36,9 @@
                 </ul>
             </div>
 
-            {{-- test kolom --}}
-            <div class="text-right">
-                <div class="inline-block text-left">
+            {{-- Test kolom --}}
+            <div class="flex justify-center md:justify-end">
+                <div>
                     <h2 class="mb-4 text-sm font-semibold uppercase">Test kolom</h2>
                     <ul class="text-gray-600 dark:text-gray-400 font-medium space-y-1">
                         <li>test kolom 1</li>

@@ -10,6 +10,26 @@
         </section>
     </x-slot>
 
+    <div class="mb-4">
+        {{ html()->form('GET', route('dishes.index'))->open() }}
+
+        {{ html()->text('search', $search ?? '')
+            ->placeholder('Zoek gerecht...')
+            ->class('border border-gray-300 rounded-lg px-3 py-2 w-60 mb-6') }}
+
+        {{ html()->button('Zoeken')
+            ->type('submit')
+            ->class('px-4 py-2 bg-blue-600 text-white rounded-lg mb-6') }}
+
+        @if(!empty($search))
+            {{ html()->a(route('dishes.index'), 'Reset')
+                ->class('text-gray-600 underline') }}
+        @endif
+
+        {{ html()->form()->close() }}
+    </div>
+
+
     {{-- Laravel form building --}}
     @can('update', App\Models\Dish::class)
         <p class="relative -top-4">

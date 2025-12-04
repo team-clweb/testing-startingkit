@@ -169,7 +169,7 @@
                 <div class="text-red-600">{{ $message }}</div>
                 @enderror
                 <label class="font-medium">Opmerking</label>
-                {{ html()->textarea('message')->rows(5)->class('border rounded w-full py-2 px-3')->placeholder('Bericht')}}
+                {{ html()->textarea('message')->rows(5)->class('border rounded w-full py-2 px-3')->placeholder('Wil je ons laten weten wat je dieetwensen zijn? Zoals: vegatarisch, veganistisch en allergieën? Of heb je nog andere opmerkingen?')}}
             </div>
 
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Verzenden</button>

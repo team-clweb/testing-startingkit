@@ -37,6 +37,7 @@ class ReservationController extends Controller
         //zorgt ervoor dat er maximaal 20 mensen op 1 datum + tijd kunnen staan
         $existingPersons = Reservation::where('date', $validated['date'])
             ->where('time', $validated['time'])
+            ->where('id', '!=', $reservation->id) // anders telt die huidige reservering ook mee
             ->sum('persons');
 
         if ($existingPersons + $validated['persons'] > 20) {

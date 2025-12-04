@@ -14,11 +14,19 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class DishesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $dishes = Dish::with('recipe')->paginate(5);
-        return view('dishes.index', compact('dishes'));
+        $search = $request->get('search');
+
+        $dishes = Dish::with('recipe')
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->paginate(5);
+
+        return view('dishes.index', compact('dishes', 'search'));
     }
+
 
     public function create()
     {

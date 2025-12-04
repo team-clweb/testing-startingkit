@@ -1,11 +1,10 @@
 {{-- code afkomstig van https://flowbite.com/docs/components/navbar/ --}}
 <nav class="bg-white shadow-lg sticky top-0 z-50">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse -ml-40">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse -ml-0 md:-ml-40">
             <img src="/chef-man-cap.svg" class="h-8" alt="Chef logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Restaurant Dennis</span>
         </a>
-
 
         <button data-collapse-toggle="navbar-default" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg

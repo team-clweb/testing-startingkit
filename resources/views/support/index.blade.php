@@ -9,12 +9,12 @@
         </div>
     </x-slot>
 
-    <div class="p-8 flex justify-between mt-6 mb-6">
-        <p class="text-4xl font-semibold font-serif ml-44 mt-5">
+    <div class="p-8 flex flex-col md:flex-row justify-between mt-6 mb-6">
+        <p class="text-4xl font-semibold font-serif -ml-0 md:ml-44 md:mt-5">
             Contact
         </p>
 
-        <p class="max-w-lg text-xl mr-60">
+        <p class="max-w-lg text-xl -ml-0 md:mr-60">
             Adres: Rijndijk 12, 3606 PG Utrecht<br>
             Telefoonnummer: (030) 309 98 38 <br>
             Email: restaurant@dennis.nl.
@@ -62,7 +62,7 @@
 
             {{ html()->closeModelForm() }}
 
-            <img src="/chef-man-cap.svg" class="h-44 mt-10 ml-32"/>
+            <img src="/chef-man-cap.svg" class="h-44 mt-10 mr-6 md:ml-32"/>
         </div>
     </div>
 </x-app-layout>

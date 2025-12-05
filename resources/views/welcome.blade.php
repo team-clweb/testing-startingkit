@@ -47,12 +47,12 @@
     </h1>
 </main>
 
-<section class="p-8 flex justify-between mt-12 mb-12">
-    <p class="text-4xl font-semibold font-serif mt-16 ml-20">
+<section class="p-8 flex md:justify-between md:flex-row flex flex-col mt-12 mb-12">
+    <p class="text-4xl font-semibold font-serif md:mt-16 md:ml-20 w-full">
         De beste plek voor een lekker hapje!
     </p>
 
-    <p class="max-w-lg text-xl mr-60">
+    <p class="max-w-lg text-xl md:mr-60">
         Wij zijn meer dan alleen een restaurant.
         We zijn een plek waar je kunt genieten van goed eten, een ontspannen sfeer en oprechte gastvrijheid.
         Onze gerechten worden met zorg bereid, met verse en eerlijke ingrediënten van lokale leveranciers.
@@ -61,32 +61,33 @@
     </p>
 </section>
 
-<section class="flex bg-gray bg-[#E5E5E5] px-12">
-      <img src="{{ asset('restaurant2.jpg') }}" class="w-1/2 object-cover">
-      <img src="{{ asset('restaurant3.jpg') }}" class="w-1/2 object-cover">
+<section class="flex flex-col md:flex-row bg-[#E5E5E5] md:px-12">
+    <img src="{{ asset('restaurant2.jpg') }}" class="w-full md:w-1/2 object-cover">
+    <img src="{{ asset('restaurant3.jpg') }}" class="w-full md:w-1/2 object-cover">
 </section>
 
-<section class="p-4  flex justify-between bg-[#E5E5E5]">
-    <p class="text-4xl font-semibold font-serif ml-36 mt-5">
+
+<section class="p-4 md:justify-between md:flex-row flex flex-col bg-[#E5E5E5]">
+    <p class="text-4xl font-semibold font-serif w-full md:w-auto md:ml-36 md:mt-5">
         Lorem ipsum dolor sit amet
     </p>
 
-    <p class="max-w-lg text-xl mr-36">
+    <p class="md:md:max-w-lg w-full text-xl md:mr-36">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus dolor in iste labore nostrum pariatur provident quaerat ratione temporibus voluptatum.
     </p>
 </section>
 
-<section class="flex bg-gray bg-[#E5E5E5] px-12">
-    <img src="{{ asset('restaurant5.jpg') }}" class="w-1/2 object-cover">
-    <img src="{{ asset('restaurant6.jpg') }}" class="w-1/2 object-cover">
+<section class="flex flex-col md:flex-row bg-[#E5E5E5] md:px-12">
+    <img src="{{ asset('restaurant5.jpg') }}" class="w-full md:w-1/2 object-cover">
+    <img src="{{ asset('restaurant6.jpg') }}" class="w-full md:w-1/2 object-cover">
 </section>
 
-<section  class="p-4  flex justify-between bg-[#E5E5E5]">
-    <p class="text-4xl font-semibold font-serif ml-36 mt-5">
+<section class="p-4 md:justify-between md:flex-row flex flex-col bg-[#E5E5E5]">
+    <p class="text-4xl font-semibold font-serif w-full md:w-auto md:ml-36 md:mt-5">
         Lorem ipsum dolor sit amet
     </p>
 
-    <p class="max-w-lg text-xl mr-36">
+    <p class="md:md:max-w-lg w-full text-xl md:mr-36">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus dolor in iste labore nostrum pariatur provident quaerat ratione temporibus voluptatum.
     </p>
 </section>

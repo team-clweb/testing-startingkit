@@ -77,13 +77,13 @@
 
                     <td class="px-6 py-4">
                         @if($dish->image)
-                            <img src="{{ asset('storage/' . $dish->image) }}" alt="img" class="w-24 h-24 object-cover mx-auto rounded">
+                            <img src="{{ asset('storage/' . $dish->image) }}" alt="img" class="w-24 h-24 object-cover mx-auto rounded hover:scale-150 duration-300">
                         @else
                             <span class="text-gray-400">Geen afbeelding</span>
                         @endif
                     </td>
 
-                    @can('view', $dish)
+                @can('view', $dish)
                         <td class="px-6 py-4">
                             {{ html()->form('GET', route('dishes.show', $dish->id))->open() }}
                             <button type="submit" class="text-blue-600 hover:underline">

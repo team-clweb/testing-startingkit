@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
     <style>
         #reservering-modal:target {
             display: flex;
@@ -38,11 +39,18 @@
     </div>
 </section>
 
-
 <main class="h-[75vh] relative flex items-center justify-center">
-    <img src="{{ asset('restaurant.webp') }}" class="absolute w-full h-full object-cover z-0">
+    <div id="main-carousel" class="absolute w-full h-full z-0 overflow-hidden" data-carousel="slide" data-carousel-interval="7000">
+        <div class="hidden duration-1000 animate-spin" data-carousel-item="active">
+            <img src="{{ asset('restaurant.webp') }}" class="absolute w-full h-full object-cover" alt="Restaurant">
+        </div>
 
-    <h1 class="text-6xl font-bold text-white z-10 px-6 py-4 rounded-lg text-center font-serif drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)] ">
+        <div class="hidden duration-1000 animate-spin" data-carousel-item>
+            <img src="{{ asset('restaurant7.jpg') }}" class="absolute w-full h-full object-cover" alt="Restaurant">
+        </div>
+    </div>
+
+    <h1 class="text-6xl font-bold text-white z-10 px-6 py-4 rounded-lg text-center font-serif drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]">
         Welkom in ons restaurant
     </h1>
 </main>

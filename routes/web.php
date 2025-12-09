@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DishesController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegistrationController;
@@ -27,11 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/menu', [MenuController::class, 'index'])->name('menu');
+
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 
 Route::get('/support', [SupportController::class, 'index'])->name('support');
 Route::post('/support/store', [SupportController::class, 'store'])->name('support.store');
-
-Route::get('/dishes', [DishesController::class, 'index'])->name('dishes.index');
 
 require __DIR__.'/auth.php';

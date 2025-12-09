@@ -13,6 +13,11 @@ class DishPolicy
     /**
      * show controller method
      */
+    public function viewAny(User $user)
+    {
+        return $user->role === 'Admin';
+    }
+
     public function view(User $user)
     {
         return $user->role === 'Admin';

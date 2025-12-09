@@ -16,6 +16,8 @@ class DishesController extends Controller
 {
     public function index(Request $request)
     {
+        $this->authorize('viewAny', Dish::class);
+
         $search = $request->get('search');
 
         $dishes = Dish::with('recipe')

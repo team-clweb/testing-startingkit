@@ -42,7 +42,14 @@
                         <a href="{{ route('ingredients.index') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Ingrediënten</a>
                     </li>
                     @endcan
-                <li><a href="{{ route('dishes.index') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Menu</a></li>
+
+                        @can('viewAny', App\Models\Dish::class)
+                        <li>
+                            <a href="{{ route('dishes.index') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Gerechten</a>
+                        </li>
+                        @endcan
+
+                <li><a href="{{ route('menu') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Menukaart</a></li>
                 <li><a href="{{ route('faq') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">FAQ</a></li>
                 <li><a href="{{ route('support') }}" class="block py-2 px-3 md:p-0 text-gray-900 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500">Contact</a></li>
                 @if (Route::has('login'))

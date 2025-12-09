@@ -71,6 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/ingredients/update/{ingredient}', [IngredientsController::class, 'update'])->name('ingredients.update');
     Route::delete('/ingredients/{ingredient}', [IngredientsController::class, 'destroy'])->name('ingredients.destroy');
 
+    Route::get('/dishes', [DishesController::class, 'index'])->name('dishes.index');
     Route::get('/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
     Route::post('/dishes/store', [DishesController::class, 'store'])->name('dishes.store');
     Route::get('/dishes/{dish}', [DishesController::class, 'show'])->name('dishes.show');

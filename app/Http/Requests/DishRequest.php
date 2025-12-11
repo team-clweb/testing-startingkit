@@ -23,6 +23,7 @@ class DishRequest extends FormRequest
             'name' => 'required|max:80',
             'description' => 'nullable|max:150',
             'instructions' => 'required|max:150',
+            'price' => 'required|numeric|min:0',
             'image' => 'nullable|image|max:2048',
         ];
     }
@@ -36,6 +37,11 @@ class DishRequest extends FormRequest
 
             'instructions.required' => 'Het recept is verplicht.',
             'instructions.max' => 'Het recept mag niet langer zijn dan 150 tekens.',
+
+            'price.required' => 'Prijs is verplicht.',
+            'price.numeric' => 'Prijs moet een getal zijn.',
+            'price.min' => 'Prijs is onjuist',
+
 
             'image.image' => 'Het bestand moet een afbeelding zijn.',
             'image.max' => 'De afbeelding is te groot.',

@@ -16,6 +16,12 @@
 <label for="instructions">Recept:</label>
 {{ html()->text('instructions', old('instructions', $dish->recipe->instructions ?? ''))->class('border rounded w-full py-2 px-3 mb-3')->placeholder('Recept')->required()}}
 
+@error('price')
+<div class="text-red-600">{{ $message }}</div>
+@enderror
+<label for="name">Prijs:</label>
+{{ html()->text('price')->class('border rounded w-full py-2 px-3 mb-3')->placeholder('Prijs')->required() }}
+
 <label class="font-bold">Ingrediënten:</label><br><br>
 @foreach($ingredients as $id => $ingredient)
     {{html()->checkbox('recipe.ingredients[]',$dish->recipe->ingredients()->where('ingredients.id',$id)->exists(),$id)}} {{$ingredient}}<br />

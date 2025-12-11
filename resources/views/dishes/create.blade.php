@@ -33,6 +33,12 @@
     <label for="instructions">Recept:</label>
     {{ html()->text('instructions', old('instructions', $dish->recipe->instructions ?? ''))->class('border rounded w-full py-2 px-3 mb-3')->placeholder('Recept') }}
 
+    @error('price')
+    <div class="text-red-600">{{ $message }}</div>
+    @enderror
+    <label for="name">Prijs:</label>
+    {{ html()->text('price')->class('border rounded w-full py-2 px-3 mb-3')->placeholder('Prijs')->required() }}
+
     @error('image')
     <div class="text-red-600">{{ $message }}</div>
     @enderror

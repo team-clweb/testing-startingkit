@@ -55,6 +55,7 @@ class DishesController extends Controller
         $dish = Dish::create([
             'name' => $validated['name'],
             'description' => $validated['description'] ?? null,
+            'price' => $validated['price'],
             'image' => $imagePath,
         ]);
 
@@ -109,6 +110,7 @@ class DishesController extends Controller
         $dish->update([
             'name' => $validated['name'],
             'description' => $validated['description'] ?? null,
+            'price' => $validated['price'],
         ]);
 
         $new_collection = collect($request->get('recipe_ingredients'));

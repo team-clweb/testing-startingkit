@@ -11,7 +11,7 @@ class MenuController extends Controller
 
     public function index()
     {
-        $dishes = Dish::all();
+        $dishes = Dish::with('recipe.ingredients.allergies')->get();
         return view('menu.index', compact('dishes'));
     }
 

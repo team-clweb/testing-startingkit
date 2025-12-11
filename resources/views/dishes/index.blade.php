@@ -44,6 +44,7 @@
             <tr>
                 <th class="px-6 py-3">Naam</th>
                 <th class="px-6 py-3">Beschrijving</th>
+                <th class="px-6 py-3">Prijs</th>
 
                 @can('view', App\Models\Dish::class)
                     <th class="px-6 py-3">Recept</th>
@@ -70,8 +71,9 @@
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4">{{ $dish->name }}</td>
                     <td class="px-6 py-4">{{ $dish->description ?? 'Geen beschrijving' }}</td>
+                    <td class="px-6 py-4">€{{ $dish->price }}</td>
 
-                    @can('view', $dish)
+                @can('view', $dish)
                         <td class="px-6 py-4">{{ $dish->recipe->instructions }}</td>
                     @endcan
 

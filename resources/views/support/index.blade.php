@@ -21,29 +21,29 @@
         </p>
     </div>
 
-    <div class="relative h-[50vh] bg-[#E5E5E5] flex flex-col items-center">
+    <div class="relative h-[100vh] md:h-[50vh] bg-[#E5E5E5] flex flex-col items-center">
         <h1 class="mt-10 text-4xl text-center font-display">
             Je bent altijd welkom om contact met ons op te nemen!
         </h1>
 
-        <div class="flex justify-start w-full mt-10 items-start ml-32">
+        <div class="flex justify-start w-full mt-10 items-start md:ml-32">
             {{ html()->form('POST', route('support.store'))->class('space-y-4 w-1/2 ml-10')->open() }}
 
-            <div class="flex space-x-4">
+            <div class="flex flex-col md:space-x-4 md:flex-row md:space-y-0 space-y-4">
                 @error('firstname')
                 <div class="text-red-600">{{ $message }}</div>
                 @enderror
-                {{ html()->text('firstname')->class('w-1/3 border border-gray-400 rounded p-2')->placeholder('Voornaam')->required()}}
+                {{ html()->text('firstname')->class('w-full md:w-1/3 border border-gray-400 rounded p-2')->placeholder('Voornaam')->required()}}
 
                 @error('infix')
                 <div class="text-red-600">{{ $message }}</div>
                 @enderror
-                {{ html()->text('infix')->class('w-1/3 border border-gray-400 rounded p-2')->placeholder('Tussenvoegsel')}}
+                {{ html()->text('infix')->class('w-full md:w-1/3 border border-gray-400 rounded p-2')->placeholder('Tussenvoegsel')}}
 
                 @error('lastname')
                 <div class="text-red-600">{{ $message }}</div>
                 @enderror
-                {{ html()->text('lastname')->class('w-1/3 border border-gray-400 rounded p-2')->placeholder('Achternaam')->required()}}
+                {{ html()->text('lastname')->class('w-full md:w-1/3 border border-gray-400 rounded p-2')->placeholder('Achternaam')->required()}}
             </div>
 
             @error('email')
@@ -62,7 +62,7 @@
 
             {{ html()->closeModelForm() }}
 
-            <img src="/chef-man-cap.svg" class="h-44 mt-10 mr-6 md:ml-32"/>
+            <img src="/chef-man-cap.svg" class="h-44 mt-10 md:ml-32"/>
         </div>
     </div>
 </x-app-layout>

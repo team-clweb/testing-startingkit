@@ -42,7 +42,6 @@ class DishRequest extends FormRequest
             'price.numeric' => 'Prijs moet een getal zijn.',
             'price.min' => 'Prijs is onjuist',
 
-
             'image.image' => 'Het bestand moet een afbeelding zijn.',
             'image.max' => 'De afbeelding is te groot.',
         ];

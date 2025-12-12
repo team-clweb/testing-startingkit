@@ -15,8 +15,8 @@
     </p>
 
     {{-- code afkomstig van https://flowbite.com/docs/components/tables/ --}}
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full table-fixed text-sm text-center text-gray-500">
+    <div class="relative w-full overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="min-w-full table-fixed text-sm text-center text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th class="px-6 py-3">Naam</th>

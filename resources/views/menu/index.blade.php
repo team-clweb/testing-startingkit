@@ -7,7 +7,7 @@
                     <div class="h-1 bg-red-600 mt-2 mb-12 w-full"></div>
                 </div>
 
-                <div class="td text-center md:text-start md:ml-56 w-full">
+                <div class="td text-center md:text-start md:ml-72 w-full">
                 <p>Bij ons draait alles om lekker eten, met zorg bereid <br>
                         in onze keuken, voor elke dag een smaakvolle maaltijd.</p>
 
@@ -18,6 +18,17 @@
                         soms laten we ons inspireren om nieuwe combinaties te ontdekken, <br>
                         zodat elk gerecht iets bijzonders wordt.
                     </p>
+                </div>
+                <div class="md:ml-60 mt-6 p-6 border-2 border-gray-400 rounded-lg bg-white shadow-md w-full md:w-2/3 mb-8">
+                    <p class="text-gray-700">
+                        Wij houden rekening met uw allergieën, deze allergieën zitten in onze gerechten:
+                    </p>
+
+                    <ul class="mt-2 list-disc inline-block text-left">
+                        @foreach($allergies as $allergy)
+                            <li>{{ $allergy->name }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
@@ -51,6 +62,5 @@
                 @endif
             @endforeach
         </div>
-
     </div>
 </x-app-layout>

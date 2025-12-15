@@ -99,4 +99,5 @@
             });
         </script>
     </section>
+    @include('includes._reservation-modal')
 </x-app-layout>

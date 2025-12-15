@@ -23,10 +23,9 @@
                     <p class="text-gray-700">
                         Wij houden rekening met uw allergieën, deze allergieën zitten in onze gerechten:
                     </p>
-
-                    <ul class="mt-2 list-disc inline-block text-left">
+                    <ul class="mt-2 flex flex-wrap">
                         @foreach($allergies as $allergy)
-                            <li>{{ $allergy->name }}</li>
+                            <li class="w-1/2">{{ $allergy->name }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -37,19 +36,17 @@
 
     <div class="max-w-lg p-6 border border-black rounded-base mt-20 mb-20 mx-auto">
         <h5 class="mb-4 text-2xl font-semibold text-center">Hoofdgerechten</h5>
-
         <div class="space-y-2">
             @foreach($dishes as $dish)
                 <p class="font-bold">{{ $dish->name }} €{{ $dish->price }}</p>
                 <p>{{ $dish->description }}</p>
 
-
                  {{-- code van https://stackoverflow.com/questions/41366092/property-title-does-not-exist-on-this-collection-instance --}}
-                <p><strong>Allergenen:</strong>
+                <p><strong>Allergieën:</strong>
                     @if($dish->recipe)
                         @foreach($dish->recipe->ingredients as $ingredient)
                             @foreach($ingredient->allergies as $allergy)
-                                {{ $allergy->name }},
+                                {{ $allergy->name }}
                             @endforeach
                         @endforeach
                     @else
@@ -63,4 +60,5 @@
             @endforeach
         </div>
     </div>
+    @include('includes._reservation-modal')
 </x-app-layout>

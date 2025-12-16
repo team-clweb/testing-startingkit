@@ -35,7 +35,17 @@
     </div>
 
     <div class="max-w-lg p-6 border border-black rounded-base mt-20 mb-20 mx-auto">
-        <h5 class="mb-4 text-2xl font-semibold text-center">Hoofdgerechten</h5>
+        <div class="flex items-center justify-between mb-6">
+            <h5 class="text-2xl font-semibold">
+                Hoofdgerechten
+            </h5>
+
+            <a href="{{ route('menu.pdf') }}"
+               class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+                Download PDF
+            </a>
+        </div>
+
         <div class="space-y-2">
             @foreach($dishes as $dish)
                 <p class="font-bold">{{ $dish->name }} €{{ $dish->price }}</p>

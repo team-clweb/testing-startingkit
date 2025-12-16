@@ -95,6 +95,22 @@
     </p>
 </section>
 
+<section class="p-8 flex md:justify-between md:flex-row flex flex-col md:mt-8 md:mb-8">
+    <p class="text-4xl font-semibold font-serif md:ml-32 w-full">
+          Kom je bij ons eten?
+    </p>
+
+    <p class="text-3xl md:mr-60 font-semibold text-gray-800 hover:text-blue-600 inline-flex" onclick="openReservationModal()">
+        Reserveren <span class="ml-2">→</span>
+    </p>
+</section>
+
+<section class="flex flex-col md:flex-row bg-[#E5E5E5]">
+    <img src="{{ asset('restaurant5.jpg') }}" class="w-full md:w-1/3 object-cover">
+    <img src="{{ asset('restaurant6.jpg') }}" class="w-full md:w-1/3 object-cover">
+    <img src="{{ asset('restaurant3.jpg') }}" class="w-full md:w-1/3 object-cover">
+</section>
+
 @include('includes._reservation-modal')
 
 @include('includes._footer')

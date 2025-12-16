@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DishesController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\DownloadMenuController;
 use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegistrationController;
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
+Route::get('/menu/pdf', DownloadMenuController::class)->name('menu.pdf');
 
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 

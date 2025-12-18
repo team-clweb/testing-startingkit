@@ -25,7 +25,11 @@
                     </p>
                     <ul class="mt-2 flex flex-wrap">
                         @foreach($allergies as $allergy)
-                            <li class="w-1/2">{{ $allergy->name }}</li>
+                            <div class="w-1/3 px-2 mt-2">
+                              <li class="rounded-full bg-red-100 py-1 text-sm font-medium text-red-700">
+                                  {{ $allergy->name }}
+                              </li>
+                            </div>
                         @endforeach
                     </ul>
                 </div>
@@ -46,29 +50,43 @@
             </a>
         </div>
 
-        <div class="space-y-2">
+        <div class="space-y-6">
             @foreach($dishes as $dish)
-                <p class="font-bold">{{ $dish->name }} €{{ $dish->price }}</p>
-                <p>{{ $dish->description }}</p>
+                <div class="flex justify-between">
+                    <div>
+                        <p class="font-bold">{{ $dish->name }} €{{ $dish->price }}</p>
+                        <p>{{ $dish->description }}</p>
 
-                 {{-- code van https://stackoverflow.com/questions/41366092/property-title-does-not-exist-on-this-collection-instance --}}
-                <p><strong>Allergieën:</strong>
-                    @if($dish->recipe)
-                        @foreach($dish->recipe->ingredients as $ingredient)
-                            @foreach($ingredient->allergies as $allergy)
-                                {{ $allergy->name }}
-                            @endforeach
-                        @endforeach
-                    @else
-                        Geen
-                    @endif
-                </p>
+                        <p class="mt-2">
+                            <strong>Allergieën:</strong>
+                            @if($dish->recipe)
+                                @foreach($dish->recipe->ingredients as $ingredient)
+                                    @foreach($ingredient->allergies as $allergy)
+                                        {{ $allergy->name }}
+                                    @endforeach
+                                @endforeach
+                            @else
+                                Geen
+                            @endif
+                        </p>
+                    </div>
 
-            @if(!$loop->last)
+                    <div>
+                        @if($dish->image)
+                            <img
+                                src="{{ asset('storage/' . $dish->image) }}"
+                                class="h-24 w-24 rounded-lg object-cover"
+                            >
+                        @else
+                        @endif
+                    </div>
+                </div>
+
+                @if(!$loop->last)
                     <hr class="border-black my-4">
                 @endif
             @endforeach
         </div>
-    </div>
+
     @include('includes._reservation-modal')
 </x-app-layout>

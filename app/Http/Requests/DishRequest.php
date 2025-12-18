@@ -31,16 +31,16 @@ class DishRequest extends FormRequest
     {
         return [
             'name.required' => 'De naam van het gerecht is verplicht.',
-            'name.max' => 'De naam van het gerecht mag niet langer zijn dan 80 tekens.',
+            'name.max' => 'De naam van het gerecht is te lang.',
 
-            'description.max' => 'De beschrijving mag niet langer zijn dan 150 tekens.',
+            'description.max' => 'De beschrijving is te lang.',
 
             'instructions.required' => 'Het recept is verplicht.',
-            'instructions.max' => 'Het recept mag niet langer zijn dan 150 tekens.',
+            'instructions.max' => 'Het recept is te lang.',
 
             'price.required' => 'Prijs is verplicht.',
             'price.numeric' => 'Prijs moet een getal zijn.',
-            'price.min' => 'Prijs is onjuist',
+            'price.min' => 'Prijs is onjuist.',
 
             'image.image' => 'Het bestand moet een afbeelding zijn.',
             'image.max' => 'De afbeelding is te groot.',

@@ -36,12 +36,12 @@ class ReservationRequest extends FormRequest
         return [
             'name.required' => 'Naam is verplicht.',
             'name.alpha' => 'Naam moet tekst zijn.',
-            'name.max' => 'Naam mag niet langer zijn dan 80 tekens.',
+            'name.max' => 'Naam is ongeldig.',
 
             'phone.required' => 'Telefoonnummer is verplicht.',
             'phone.string' => 'Telefoonnummer moet tekst zijn.',
             'phone.regex' => 'Telefoonnummer is niet geldig.',
-            'phone.max' => 'Telefoonnummer mag niet langen zijn dan 12 tekens.',
+            'phone.max' => 'Telefoonnummer is ongeldig.',
 
             'email.required' => 'Het e-mailadres is verplicht.',
             'email.email' => 'Het e-mailadres moet een geldig zijn.',
@@ -57,7 +57,7 @@ class ReservationRequest extends FormRequest
             'persons.min' => 'Er moet minimaal 1 persoon zijn.',
             'persons.max' => 'Het maximale personen is 12.',
 
-            'message.max' => 'Het bericht mag niet langer zijn dan 300 tekens.',
+            'message.max' => 'Uw bericht is te lang.',
         ];
     }
 }

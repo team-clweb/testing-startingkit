@@ -32,7 +32,7 @@ class OpeningHourRequest extends FormRequest
         return [
             'open.date_format' => 'Openingstijd is ongeldig.',
             'close.date_format' => 'Sluitingstijd is ongeldig.',
-            'close.after' => 'Sluitingstijd moet na openingstijd.'
+            'close.after' => 'Sluitingstijd mo et na openingstijd.'
         ];
     }
 }

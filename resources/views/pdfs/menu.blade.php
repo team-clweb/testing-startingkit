@@ -9,9 +9,10 @@
 
 <h1 class="text-4xl font-bold text-center mb-8">Menu Dennis</h1>
 
-<div class="max-w-xl mx-auto space-y-6">
+<div class="space-y-6">
     @foreach($dishes as $dish)
-        <div>
+        <div class="flex justify-between">
+         <div>
             <p class="font-bold">{{ $dish->name }} €{{ $dish->price }}</p>
             <p>{{ $dish->description }}</p>
 
@@ -27,6 +28,17 @@
                     Geen
                 @endif
             </p>
+        </div>
+
+        <div>
+            @if($dish->image)
+                <img
+                    src="{{ asset('storage/' . $dish->image) }}"
+                    class="h-24 w-24 rounded-lg object-cover"
+                >
+            @else
+            @endif
+            </div>
         </div>
 
         @if(!$loop->last)

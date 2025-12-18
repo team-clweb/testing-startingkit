@@ -14,19 +14,21 @@
             Contact
         </p>
 
-        <p class="max-w-lg text-xl -ml-0 md:mr-60">
-            Adres: Rijndijk 12, 3606 PG Utrecht<br>
-            Telefoonnummer: (030) 309 98 38 <br>
-            Email: restaurant@dennis.nl.
-        </p>
+        <div class="max-w-lg text-xl text-gray-700 -ml-0 md:mr-60">
+            <p><span class="font-medium">Adres:</span> Rijndijk 12, 3606 PG Utrecht</p>
+            <p><span class="font-medium">Telefoon:</span> (030) 309 98 38</p>
+            <p><span class="font-medium">E-mail:</span> restaurant@dennis.nl</p>
+        </div>
     </div>
 
     <div class="relative h-[100vh] md:h-[50vh] bg-[#E5E5E5] flex flex-col items-center">
         <h1 class="mt-10 text-4xl text-center font-display">
             Je bent altijd welkom om contact met ons op te nemen!
         </h1>
+
         @include('support._form')
     </div>
+
     @include('includes._reservation-modal')
 </x-app-layout>
 

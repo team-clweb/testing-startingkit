@@ -34,22 +34,22 @@ class SupportRequest extends FormRequest
         return [
             'firstname.required' => 'Voornaam is verplicht.',
             'firstname.alpha' => 'Voornaam moet tekst zijn.',
-            'firstname.max' => 'Voornaam mag niet langer zijn dan 80 tekens.',
+            'firstname.max' => 'Voornaam is te lang.',
 
             'infix.alpha' => 'Tussenvoegsel moet tekst zijn.',
-            'infix.max' => 'Tussenvoegsel mag niet langer zijn dan 10 tekens.',
+            'infix.max' => 'Tussenvoegsel is te lang.',
 
             'lastname.required' => 'Achternaam is verplicht.',
             'lastname.alpha' => 'Achternaam moet tekst zijn.',
-            'lastname.max' => 'Achternaam mag niet langer zijn dan 80 tekens.',
+            'lastname.max' => 'Achternaam is te lang',
 
             'email.required' => 'Email is verplicht.',
             'email.email' => 'Email moet een geldig zijn.',
-            'email.max' => 'Email mag niet langer zijn dan 70 tekens.',
+            'email.max' => 'Email is te lang.',
 
             'message.required' => 'Bericht is verplicht.',
             'message.string' => 'Bericht moet tekst zijn.',
-            'message.max' => 'Bericht mag niet langer zijn dan 2000 tekens.',
+            'message.max' => 'Bericht is te lang.',
         ];
     }
 }

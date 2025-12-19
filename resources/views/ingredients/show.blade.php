@@ -10,25 +10,40 @@
         </section>
     </x-slot>
 
-    <div class="flex flex-row justify-center my-12">
-        {{-- Code afkomstig van https://flowbite.com/docs/components/card/ --}}
-        <div class="block p-12 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 max-w-2xl w-full">
+      <div class="max-w-3xl mx-auto px-4 my-12">
+        <div class="bg-white shadow-2xl rounded-xl p-8 ">
             @if($ingredient->allergies->isEmpty())
-                <p class="text-red-700 font-bold text-lg text-center">Er zijn geen allergieën gekoppeld aan {{strtolower($ingredient->name) }}</p>
+                <div class="text-center">
+                    <p class="text-red-600 font-semibold text-lg">
+                        Er zijn geen allergieën gekoppeld aan {{strtolower($ingredient->name) }}
+                    </p>
+                </div>
             @else
-                <h2 class="mb-2 text-lg font-semibold text-gray-900">Allergieën</h2>
-                <ul class="mb-3 list-disc list-inside text-gray-700 space-y-1">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                    Allergieën
+                </h2>
+
+                <ul class="space-y-3">
                     @foreach($ingredient->allergies as $allergy)
-                        <li>
-                            {{ $allergy->name }} @if($allergy->description) - {{ $allergy->description }}@endif
+                        <li class="flex items-start p-4 border rounded-lg hover:bg-gray-50 border-black">
+                            <div class="mt-1 h-2 w-2 bg-red-500 rounded-full mr-3"></div>
+                            <div>
+                                <p class="font-medium text-gray-900">
+                                    {{ $allergy->name }}
+                                </p>
+                                @if($allergy->description)
+                                    <p class="text-sm text-gray-600">
+                                        {{ $allergy->description }}
+                                    </p>
+                                @endif
+                            </div>
                         </li>
                     @endforeach
                 </ul>
             @endif
         </div>
-    </div>
 
-    <p class="mt-4 text-center">
-        <a href="{{ route('ingredients.index') }}" class="text-blue-600 hover:underline">Terug naar overzicht</a>
-    </p>
+        <p class="mt-4 text-center">
+            <a href="{{ route('ingredients.index') }}" class="text-blue-600 hover:underline">Terug naar overzicht</a>
+        </p>
 </x-app-layout>

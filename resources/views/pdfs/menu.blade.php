@@ -40,12 +40,8 @@
             @endif
             </div>
         </div>
-
-        @if(!$loop->last)
             <hr class="border-black my-4">
-        @endif
     @endforeach
 </div>
-
 </body>
 </html>

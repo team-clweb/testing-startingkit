@@ -6,7 +6,7 @@
                 <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
                     Reservering bewerken
                 </h1>
-                <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl">
+                <p class="mt-4 text-lg font-normal text-gray-500 lg:text-xl">
                     Vul hieronder de gegevens in om de reservering bij te werken.
                 </p>
                 @if(session('error'))

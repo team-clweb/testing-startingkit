@@ -44,7 +44,7 @@ class ReservationRequest extends FormRequest
             'phone.max' => 'Telefoonnummer is ongeldig.',
 
             'email.required' => 'Het e-mailadres is verplicht.',
-            'email.email' => 'Het e-mailadres moet een geldig zijn.',
+            'email.email' => 'Het e-mailadres moet geldig zijn.',
 
             'date.required' => 'Datum is verplicht.',
             'date.after_or_equal' => 'Deze datum is niet mogelijk',
